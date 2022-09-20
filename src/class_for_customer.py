@@ -1,5 +1,9 @@
 import sys
+import json
 
+
+with open('Menu.json', 'rb') as menu_list:
+    menu = json.load(menu_list)
 
 class Customer:
 
