@@ -110,3 +110,16 @@ class Customer:
         rewards_customer_list.append(self.name)
         with open('Rewards_customer_list.json', 'w') as rewards_customer:
             json.dump(rewards_customer_list, rewards_customer)
+          
+    def search_customer(self):
+        global customer_list
+        with open('Customer_list.json', 'rb') as customer:
+            customer_list = json.load(customer)
+
+        return customer_list
+
+    def add_customer(self):
+        self.search_customer()
+        customer_list.append(self.name)
+        with open('Customer_list.json', 'w') as customer:
+            json.dump(customer_list, customer)
