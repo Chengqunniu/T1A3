@@ -53,6 +53,7 @@ class Customer:
         '''Used for repeat order.
         '''
         valid = False
+        global sticker
        
         # While loop to check whether customers need to order anthor dish or not.     
         while not valid:
@@ -76,12 +77,20 @@ class Customer:
         '''calculate the price
         '''
         global total_cost
+        global discount
+
         base_price = 0
 
         for sticker_index, sticker_name in enumerate(order):    
             price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
             base_price += price
-        total_cost = base_price
+        self.search_rewards_customer()
+        if self.name in rewards_customer_list:
+            total_cost= float(base_price * 9/10)
+            discount = str('-10%')
+        else:
+            total_cost = base_price
+            discount = str('0%')
     
     def add_membership(self):
         '''Add customer to the rewards customer list
@@ -113,8 +122,10 @@ class Customer:
             unit_price = menu[dish_name]
             Line_1 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[dish_index])
             sys.stdout.write(receipt_line(str(dish_name + ':'), Line_1))
-        Line_2 = str(total_cost) + '(AUD)'
-        sys.stdout.write(receipt_line('Total Cost:', Line_2))  
+        Line_2 = str(discount) + '(AUD)'
+        Line_3 = str(total_cost) + '(AUD)'
+        sys.stdout.write(receipt_line('Discount:', Line_2))
+        sys.stdout.write(receipt_line('Total Cost:', Line_3))  
     
     def search_rewards_customer(self):
         global rewards_customer_list
