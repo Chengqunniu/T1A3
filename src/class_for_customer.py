@@ -13,7 +13,9 @@ class Customer:
     def order(self):
         global sticker
         global order
+        global number_of_stickers
 
+        number_of_stickers = []
         order = []
         sys.stdout.write('Enter the sticker name [Enter a valid sticker only, e.g. Yum Yum Hana]:\n')
         sticker = str(sys.stdin.readline().strip())
@@ -31,8 +33,6 @@ class Customer:
     def record_quantity(self):
         '''check whether the quantity input is integer and greater than zero
         '''
-        global number_of_stickers
-        number_of_stickers = []
         quantity_is_float = True
         
         # While loop to check the input and give user another change if the input is invalid.
@@ -53,7 +53,6 @@ class Customer:
         '''Used for repeat order.
         '''
         valid = False
-        global sticker
        
         # While loop to check whether customers need to order anthor dish or not.     
         while not valid:
@@ -80,7 +79,7 @@ class Customer:
         global discount
 
         base_price = 0
-
+        print(number_of_stickers)
         for sticker_index, sticker_name in enumerate(order):    
             price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
             base_price += price
