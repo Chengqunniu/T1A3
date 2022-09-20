@@ -98,5 +98,15 @@ class Customer:
             sys.stdout.write(receipt_line(str(dish_name + ':'), Line_1))
         Line_3 = str(total_cost) + '(AUD)'
         sys.stdout.write(receipt_line('Total Cost:', Line_3))  
-
     
+    def search_rewards_customer(self):
+        global rewards_customer_list
+        rewards_customer_list = []
+        with open('Rewards_customer_list.json', 'rb') as rewards_customer:
+            rewards_customer_list = json.load(rewards_customer)
+
+    def add_rewards_customer(self):
+        self.search_rewards_customer()
+        rewards_customer_list.append(self.name)
+        with open('Rewards_customer_list.json', 'w') as rewards_customer:
+            json.dump(rewards_customer_list, rewards_customer)
