@@ -1,5 +1,7 @@
 import sys
 from class_for_text import display_message
+from class_for_customer import Customer
+
 
 
 def collect_info_and_order():
@@ -18,5 +20,9 @@ def collect_info_and_order():
             break
         else:
             sys.stdout.write('please enter a valid name, not number\n')
+
+
+    customer_name = Customer(name)
+    customer_name.order()
 
     print()
