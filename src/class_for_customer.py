@@ -23,6 +23,8 @@ class Customer:
             sticker = str(sys.stdin.readline().strip())
         self.record_quantity()
         self.repeat_order()
+        self.calculate_price()
+
 
         
     def record_quantity(self):
@@ -64,3 +66,18 @@ class Customer:
                     new_sticker_name = str(input('Please enter a valid sticker name:').strip())
                 sticker = new_sticker_name
                 self.record_quantity()
+
+    def calculate_price(self):
+        '''calculate the price
+        '''
+        global total_cost
+        global discount
+
+        base_price = 0
+
+        for sticker_index, sticker_name in enumerate(order):    
+            price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
+            base_price += price
+        total_cost = base_price
+
+    
