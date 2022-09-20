@@ -24,7 +24,7 @@ class Customer:
         self.record_quantity()
         self.repeat_order()
         self.calculate_price()
-
+        self.print_receipt()
 
         
     def record_quantity(self):
@@ -33,6 +33,8 @@ class Customer:
         global number_of_stickers
         number_of_stickers = []
         quantity_is_float = True
+        
+        # While loop to check the input and give user another change if the input is invalid.
         while quantity_is_float:
             sys.stdout.write('Enter the sticker quantity [Enter a positive integer only, e.g. 1, 2, 3]:\n')
             quantity = (sys.stdin.readline().strip())
@@ -50,11 +52,13 @@ class Customer:
         '''Used for repeat order.
         '''
         valid = False
-        # While loop to check whether customers need to order anthor dish or not.
+       
+        # While loop to check whether customers need to order anthor dish or not.     
         while not valid:
             sys.stdout.write('Want to order another sticker? ' + 'Y or N' + '\n')
             another_sticker = str(sys.stdin.readline().strip())
             # If the answer is not N, then the loop will repeat.
+           
             if another_sticker == 'N':
                 valid = True
                 return valid
@@ -71,13 +75,28 @@ class Customer:
         '''calculate the price
         '''
         global total_cost
-        global discount
-
         base_price = 0
 
         for sticker_index, sticker_name in enumerate(order):    
             price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
             base_price += price
         total_cost = base_price
+
+    def print_receipt(self):
+        '''Print receipt
+        '''
+        print('*' * 50)
+        print('Receipt of Customer' + ' ' + str(self.name))
+        print('*' * 50)
+        # This function is to align the line of the receipt
+        receipt_line = lambda left, right: (f'{left:25}  {str(right):>25}') +'\n'
+       
+        # Use for loop to display each dish on a single line on the receipt.
+        for dish_index, dish_name in enumerate(order):      
+            unit_price = menu[dish_name]
+            Line_1 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[dish_index])
+            sys.stdout.write(receipt_line(str(dish_name + ':'), Line_1))
+        Line_3 = str(total_cost) + '(AUD)'
+        sys.stdout.write(receipt_line('Total Cost:', Line_3))  
 
     
