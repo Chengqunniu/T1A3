@@ -9,9 +9,7 @@ class Customer:
     def order(self):
         global sticker
         global order
-        global number_of_stickers
 
-        number_of_stickers = []
         order = []
         sys.stdout.write('Enter the sticker name [Enter a valid sticker only, e.g. Yum Yum Hana]:\n')
         sticker = str(sys.stdin.readline().strip())
