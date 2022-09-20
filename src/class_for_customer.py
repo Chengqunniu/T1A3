@@ -22,6 +22,8 @@ class Customer:
             sys.stdout.write('Please enter a valid sticker name:'+ '\n')
             sticker = str(sys.stdin.readline().strip())
         self.record_quantity()
+        self.repeat_order()
+
         
     def record_quantity(self):
         '''check whether the quantity input is integer and greater than zero
@@ -41,3 +43,24 @@ class Customer:
                 quantity_is_float = True
         order.append(sticker)
         number_of_stickers.append(quantity)
+
+    def repeat_order(self):
+        '''Used for repeat order.
+        '''
+        valid = False
+        # While loop to check whether customers need to order anthor dish or not.
+        while not valid:
+            sys.stdout.write('Want to order another sticker? ' + 'Y or N' + '\n')
+            another_sticker = str(sys.stdin.readline().strip())
+            # If the answer is not N, then the loop will repeat.
+            if another_sticker == 'N':
+                valid = True
+                return valid
+            elif another_sticker == 'Y':
+                sys.stdout.write('Enter a valid sticker name' + '\n')
+                new_sticker_name = str(sys.stdin.readline().strip())
+                while new_sticker_name not in menu:
+                    # Read the new input
+                    new_sticker_name = str(input('Please enter a valid sticker name:').strip())
+                sticker = new_sticker_name
+                self.record_quantity()
