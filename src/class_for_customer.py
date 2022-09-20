@@ -23,6 +23,7 @@ class Customer:
             sticker = str(sys.stdin.readline().strip())
         self.record_quantity()
         self.repeat_order()
+        self.add_membership()
         self.calculate_price()
         self.print_receipt()
 
@@ -81,6 +82,22 @@ class Customer:
             price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
             base_price += price
         total_cost = base_price
+    
+    def add_membership(self):
+        '''Add customer to the rewards customer list
+        '''
+        self.search_rewards_customer()
+        if self.name not in rewards_customer_list:
+            valid = False
+            while not valid:
+                sys.stdout.write('The customer is not in the rewards program. Does the customer want to join the rewards program' + '\n' + '[Enter Y/N]?' +'\n')
+                answer = str(sys.stdin.readline().strip())
+            # Check whether the answer is valid.
+                if answer == 'Y' or answer == 'N':
+                    valid = True
+            if answer == 'Y':
+                sys.stdout.write('Successfully add the customer to the rewards program' + '\n')
+                self.add_rewards_customer()
 
     def print_receipt(self):
         '''Print receipt
@@ -96,8 +113,8 @@ class Customer:
             unit_price = menu[dish_name]
             Line_1 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[dish_index])
             sys.stdout.write(receipt_line(str(dish_name + ':'), Line_1))
-        Line_3 = str(total_cost) + '(AUD)'
-        sys.stdout.write(receipt_line('Total Cost:', Line_3))  
+        Line_2 = str(total_cost) + '(AUD)'
+        sys.stdout.write(receipt_line('Total Cost:', Line_2))  
     
     def search_rewards_customer(self):
         global rewards_customer_list
