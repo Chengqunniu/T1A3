@@ -125,7 +125,7 @@ class Customer:
         Line_3 = str(total_cost) + '(AUD)'
         sys.stdout.write(receipt_line('Discount:', Line_2))
         sys.stdout.write(receipt_line('Total Cost:', Line_3))  
-    
+        
     def search_rewards_customer(self):
         global rewards_customer_list
         rewards_customer_list = []
@@ -150,3 +150,10 @@ class Customer:
         customer_list.append(self.name)
         with open('Customer_list.json', 'w') as customer:
             json.dump(customer_list, customer)
+
+    def search_order_history(self):
+        global customer_order_history
+        with open('Customer_order_history.json', 'rb') as search_history:
+            customer_order_history = json.load(search_history)
+
+        return customer_order_history
