@@ -1,3 +1,4 @@
+import json
 import click
 from class_for_text import text
 
@@ -10,8 +11,8 @@ def encode(password):
     '''create a new password
     '''
     system_password = password
-    with open('password.txt', 'w', encoding='utf8') as file:
-        file.write(system_password)
+    with open('Password.json', 'w', encoding = 'utf8') as file:
+        json.dump(system_password, file)
 
 MESSAGE= 'Please enter your password'
 password_message = text(MESSAGE)

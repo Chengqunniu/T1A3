@@ -25,11 +25,13 @@ class Customer:
         while sticker not in menu:   
             sys.stdout.write('Please enter a valid sticker name:'+ '\n')
             sticker = str(sys.stdin.readline().strip())
+            return False
         self.record_quantity()
         self.repeat_order()
         self.add_membership()
         self.calculate_price()
         self.print_receipt()
+        return True
 
         
     def record_quantity(self):
