@@ -18,6 +18,7 @@ def welcome_page():
     You can choose from the following options:
     1: Collect information & Order stickers
     2: Display existing customer information
+    3: Check customer order history
     ''' + '\n')
     sys.stdout.write('#' * 40 + '\n')
     # If customer does not enter a correct number, it will keep asking them to enter a right number.
@@ -28,7 +29,11 @@ def welcome_page():
             collect_info_and_order()
             press_enter.color_input()
             welcome_page()
-        if category == '2':
+        elif category == '2':
             customer_info()
             press_enter.color_input()
             welcome_page()
+        elif category == '3':
+            check_history()
+            press_enter.color_input()
+            welcome_page()   

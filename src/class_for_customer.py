@@ -11,6 +11,8 @@ class Customer:
         self.name = name
 
     def order(self):
+        '''order stickers
+        '''
         global sticker
         global order
         global number_of_stickers
@@ -107,6 +109,22 @@ class Customer:
                 sys.stdout.write('Successfully add the customer to the rewards program' + '\n')
                 self.add_rewards_customer()
 
+    def store_order_history(self):
+        '''Store customer order histories
+        '''
+        self.search_customer()
+        index_of_customer = customer_list.index(self.name) 
+        # For loop to record customer order hisotry.
+        self.search_order_history()
+        personal_order_history = ''
+        for sticker_index, sticker_name in enumerate(order):
+            order_history = (str(number_of_stickers[sticker_index]) + 'x' + str(sticker_name) + '|')
+            personal_order_history += str(order_history)
+        final_personal_order_history = {str(personal_order_history):  str(total_cost)}
+        customer_order_history[index_of_customer].append(final_personal_order_history)
+        with open('Customer_order_history.json', 'w') as add_history:
+            json.dump(customer_order_history, add_history)
+
     def print_receipt(self):
         '''Print receipt
         '''
@@ -125,7 +143,7 @@ class Customer:
         Line_3 = str(total_cost) + '(AUD)'
         sys.stdout.write(receipt_line('Discount:', Line_2))
         sys.stdout.write(receipt_line('Total Cost:', Line_3))  
-        
+
     def search_rewards_customer(self):
         global rewards_customer_list
         rewards_customer_list = []
