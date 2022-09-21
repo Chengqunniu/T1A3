@@ -3,6 +3,7 @@ from class_for_text import text
 from collect_info_and_order import collect_info_and_order
 from display_customer_info import customer_info
 from display_order_history import check_history
+from add_update_menu import add_sold_out_stickers, add_update
 
 
 press_enter = text('Press enter to continue...')
@@ -20,6 +21,8 @@ def welcome_page():
     1: Collect information & Order stickers
     2: Display existing customer information
     3: Check customer order history
+    4: Add update menu items
+    5: Add sold out menu items
     ''' + '\n')
     sys.stdout.write('#' * 40 + '\n')
     # If customer does not enter a correct number, it will keep asking them to enter a right number.
@@ -38,3 +41,11 @@ def welcome_page():
             check_history()
             press_enter.color_input()
             welcome_page()   
+        elif category == '4':
+            add_update()
+            press_enter.color_input()
+            welcome_page()  
+        elif category == '5':
+            add_sold_out_stickers()
+            press_enter.color_input()
+            welcome_page() 

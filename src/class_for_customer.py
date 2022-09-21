@@ -22,7 +22,7 @@ class Customer:
         order = []
         sys.stdout.write('Enter the sticker name [Enter a valid sticker only, e.g. Yum Yum Hana]:\n')
         sticker = str(sys.stdin.readline().strip())
-        # While loop to check whether the input dish name is in the Menu. If not in the Menu, then the while loop will keep looping.
+        # While loop to check whether the input sticker name is in the Menu. If not in the Menu, then the while loop will keep looping.
         while sticker not in menu:   
             sys.stdout.write('Please enter a valid sticker name:'+ '\n')
             sticker = str(sys.stdin.readline().strip())
@@ -54,7 +54,7 @@ class Customer:
         '''
         valid = False
        
-        # While loop to check whether customers need to order anthor dish or not.     
+        # While loop to check whether customers need to order anthor sticker or not.     
         while not valid:
             sys.stdout.write('Want to order another sticker? ' + 'Y or N' + '\n')
             another_sticker = str(sys.stdin.readline().strip())
@@ -99,7 +99,7 @@ class Customer:
             self.add_customer()
             self.search_order_history()
             customer_order_history.append([])
-            with open('Customer_order_history.json', 'w') as add_history:
+            with open('Customer_order_history.json', 'w', encoding='utf8') as add_history:
                 json.dump(customer_order_history, add_history)
         self.search_rewards_customer()
         if self.name not in rewards_customer_list:
@@ -129,7 +129,7 @@ class Customer:
             personal_order_history += str(order_history)
         final_personal_order_history = {str(personal_order_history):  str(total_cost)}
         customer_order_history[index_of_customer].append(final_personal_order_history)
-        with open('Customer_order_history.json', 'w') as add_history:
+        with open('Customer_order_history.json', 'w', encoding='utf8') as add_history:
             json.dump(customer_order_history, add_history)
 
     def print_receipt(self):
@@ -141,29 +141,35 @@ class Customer:
         # This function is to align the line of the receipt
         receipt_line = lambda left, right: (f'{left:25}  {str(right):>25}') +'\n'
        
-        # Use for loop to display each dish on a single line on the receipt.
-        for dish_index, dish_name in enumerate(order):      
-            unit_price = menu[dish_name]
-            Line_1 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[dish_index])
-            sys.stdout.write(receipt_line(str(dish_name + ':'), Line_1))
+        # Use for loop to display each sticker on a single line on the receipt.
+        for sticker_index, sticker_name in enumerate(order):      
+            unit_price = menu[sticker_name]
+            Line_1 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[sticker_index])
+            sys.stdout.write(receipt_line(str(sticker_name + ':'), Line_1))
         Line_2 = str(discount) + '(AUD)'
         Line_3 = str(total_cost) + '(AUD)'
         sys.stdout.write(receipt_line('Discount:', Line_2))
         sys.stdout.write(receipt_line('Total Cost:', Line_3))  
 
     def search_rewards_customer(self):
+        '''Retrieve rewards customer information
+        '''
         global rewards_customer_list
         rewards_customer_list = []
         with open('Rewards_customer_list.json', 'rb') as rewards_customer:
             rewards_customer_list = json.load(rewards_customer)
 
     def add_rewards_customer(self):
+        '''Add customer to the rewards customer
+        '''
         self.search_rewards_customer()
         rewards_customer_list.append(self.name)
-        with open('Rewards_customer_list.json', 'w') as rewards_customer:
+        with open('Rewards_customer_list.json', 'w', encoding='utf8') as rewards_customer:
             json.dump(rewards_customer_list, rewards_customer)
           
     def search_customer(self):
+        '''Retrieve customer information
+        '''
         global customer_list
         with open('Customer_list.json', 'rb') as customer:
             customer_list = json.load(customer)
@@ -171,12 +177,16 @@ class Customer:
         return customer_list
 
     def add_customer(self):
+        '''Add customer to the customer list
+        '''
         self.search_customer()
         customer_list.append(self.name)
-        with open('Customer_list.json', 'w') as customer:
+        with open('Customer_list.json', 'w', encoding='utf8') as customer:
             json.dump(customer_list, customer)
 
     def search_order_history(self):
+        '''Retrieve order history
+        '''
         global customer_order_history
         with open('Customer_order_history.json', 'rb') as search_history:
             customer_order_history = json.load(search_history)
