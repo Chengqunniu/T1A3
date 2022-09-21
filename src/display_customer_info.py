@@ -24,18 +24,22 @@ def customer_info():
     valid = True
     while valid:
         number = sys.stdin.readline().strip()
-        if number == 1:
-            for name in customer_list:
-                if name not in rewards_customer_list:
-                    table.add_row(name, '❌')
-        elif number ==2:
-            for name in rewards_customer_list:
-                table.add_row(name, '✅')
-        else:
-            sys.stdout.write('Please enter a valid number')
-
+        try:
+            number = int(number)
+            if number == 1:
+                for name in customer_list:
+                    if name not in rewards_customer_list:
+                        table.add_row(name, '❌')
+                        valid = False
+            elif number == 2:
+                for name in rewards_customer_list:
+                    table.add_row(name, '✅')
+                    valid = False
+            else:
+                sys.stdout.write('Please enter a valid number' + '\n')
+        except ValueError:
+            sys.stdout.write('Please enter a valid number' + '\n')
 
     console = Console()
     console.print(table)
 
-customer_info()
