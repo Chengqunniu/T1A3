@@ -33,3 +33,8 @@ def search_menu():
     global menu
     with open('Menu.json', 'rb') as menu_list:
         menu = json.load(menu_list)
+
+def sold_out_list():
+    global sold_out_sticker_list
+    with open('Sold_out_list.json', 'rb') as sold_out:
+        sold_out_sticker_list = json.load(sold_out)

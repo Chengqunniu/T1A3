@@ -2,6 +2,7 @@ import sys
 import json
 
 
+
 with open('Menu.json', 'rb') as menu_list:
     menu = json.load(menu_list)
 
@@ -78,6 +79,7 @@ class Customer:
         global discount
 
         base_price = 0
+
         for sticker_index, sticker_name in enumerate(order):    
             price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
             base_price += price
@@ -95,9 +97,8 @@ class Customer:
         self.search_customer()
         if self.name not in customer_list:
             self.add_customer()
-            with open('Customer_order_history.json', 'rb') as search_history:
-                customer_order_history = json.load(search_history)
-                customer_order_history.append([])
+            self.search_order_history()
+            customer_order_history.append([])
             with open('Customer_order_history.json', 'w') as add_history:
                 json.dump(customer_order_history, add_history)
         self.search_rewards_customer()
