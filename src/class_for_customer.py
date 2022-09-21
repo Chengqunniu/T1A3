@@ -26,11 +26,6 @@ class Customer:
             sys.stdout.write('Please enter a valid sticker name:'+ '\n')
             sticker = str(sys.stdin.readline().strip())
             return False
-        self.record_quantity()
-        self.repeat_order()
-        self.add_membership()
-        self.calculate_price()
-        self.print_receipt()
         return True
 
         
@@ -62,8 +57,8 @@ class Customer:
         while not valid:
             sys.stdout.write('Want to order another sticker? ' + 'Y or N' + '\n')
             another_sticker = str(sys.stdin.readline().strip())
-            # If the answer is not N, then the loop will repeat.
-           
+
+            # If the answer is not N, then the loop will repeat.         
             if another_sticker == 'N':
                 valid = True
                 return valid
@@ -83,7 +78,6 @@ class Customer:
         global discount
 
         base_price = 0
-        print(number_of_stickers)
         for sticker_index, sticker_name in enumerate(order):    
             price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
             base_price += price
@@ -96,8 +90,16 @@ class Customer:
             discount = str('0%')
     
     def add_membership(self):
-        '''Add customer to the rewards customer list
+        '''Add customer to the customer list
         '''
+        self.search_customer()
+        if self.name not in customer_list:
+            self.add_customer()
+            with open('Customer_order_history.json', 'rb') as search_history:
+                customer_order_history = json.load(search_history)
+                customer_order_history.append([])
+            with open('Customer_order_history.json', 'w') as add_history:
+                json.dump(customer_order_history, add_history)
         self.search_rewards_customer()
         if self.name not in rewards_customer_list:
             valid = False
@@ -110,6 +112,8 @@ class Customer:
             if answer == 'Y':
                 sys.stdout.write('Successfully add the customer to the rewards program' + '\n')
                 self.add_rewards_customer()
+        return rewards_customer_list
+        
 
     def store_order_history(self):
         '''Store customer order histories
