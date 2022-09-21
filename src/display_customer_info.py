@@ -20,10 +20,9 @@ def customer_info():
     with open('Rewards_customer_list.json', 'rb') as rewards_customer:
         rewards_customer_list = json.load(rewards_customer)
 
-    sys.stdout.write('Please select customer group: 1 for non-rewards customer, 2 for rewards customer'+'\n')
+    number = input('Please select customer group: 1 for non-rewards customer, 2 for rewards customer'+'\n').strip()
     valid = True
     while valid:
-        number = sys.stdin.readline().strip()
         try:
             number = int(number)
             if number == 1:
@@ -36,9 +35,10 @@ def customer_info():
                     table.add_row(name, '✅')
                     valid = False
             else:
-                sys.stdout.write('Please enter a valid number' + '\n')
+                number = input('Please enter a valid number' + '\n').strip()
         except ValueError:
-            sys.stdout.write('Please enter a valid number' + '\n')
+            number = input('Please enter a valid number' + '\n').strip()
+
 
     console = Console()
     console.print(table)

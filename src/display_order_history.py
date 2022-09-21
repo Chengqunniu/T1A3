@@ -18,15 +18,14 @@ def check_history():
     # While loop to check whether the customer name entered is in the system. If not, the loop will repeat. 
     while Valid_customer_name:
         if name not in customer_list:
-            sys.stdout.write('Pleaase enter the customer name again' + '\n')
-            name = str(sys.stdin.readline().strip())
+            name = str(input('Pleaase enter the customer name again' + '\n').strip())          
         else:
             Valid_customer_name = False  
     index_of_customer = customer_list.index(name)
     # If loop to display customer order history. If order history is empty, it will display the sentence to let customer know that they have no order history. If not, it will print the order history.
     customer_order_history = customer_name.search_order_history()
     if customer_order_history[index_of_customer] == []:
-        sys.stdout.write('The customer has no order history' + '\n')
+        print('The customer has no order history')
     else:
         rprint('Customer order history')
 
