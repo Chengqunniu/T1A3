@@ -2,6 +2,7 @@ import sys
 from class_for_text import text
 from collect_info_and_order import collect_info_and_order
 from display_customer_info import customer_info
+from display_order_history import check_history
 
 
 press_enter = text('Press enter to continue...')
