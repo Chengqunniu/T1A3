@@ -55,3 +55,6 @@ def welcome_page():
             display_products()
             press_enter.color_input()
             welcome_page()  
+        elif category == '0':
+            print('Bye')
+            sys.exit()  

@@ -28,6 +28,7 @@ def add_update():
         new_menu_list = []
     with open('Menu.json', 'w', encoding='utf8') as menu_list:
         json.dump(menu, menu_list)
+    return menu
 
 def add_sold_out_stickers():
     '''Add sold out stickers
@@ -48,7 +49,8 @@ def add_sold_out_stickers():
     final_sold_out_stickers_list = sold_out_sticker_list
     with open('sold_out_list.json', 'w', encoding='utf8') as sold_out:
             json.dump(final_sold_out_stickers_list, sold_out)
-        
+    return final_sold_out_stickers_list
+    
 def search_menu():
     '''Retrieve menu items
     '''

@@ -113,7 +113,6 @@ class Customer:
                 self.add_rewards_customer()
         return rewards_customer_list
         
-
     def store_order_history(self):
         '''Store customer order histories
         '''
