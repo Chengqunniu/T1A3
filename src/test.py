@@ -57,19 +57,34 @@ name = Customer('Sam')
 #         with open('Rewards_customer_list.json', 'w', encoding='utf8') as rewards_customer:
 #             json.dump(rewards_customer_list, rewards_customer)
 
-# Test add_update function
-class TestAddUpdateMenu:
-    def test_invalidinput_add_update_menu(self, monkeypatch):
-        monkeypatch.setattr('builtins.input',  lambda _: 'Hana:Hana')
-        assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
+# # Test add_update function
+# class TestAddUpdateMenu:
+#     def test_invalidinput_add_update_menu(self, monkeypatch):
+#         monkeypatch.setattr('builtins.input',  lambda _: 'Hana:Hana')
+#         assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
 
-    def test_invalidprice_add_update_menu(self, monkeypatch):
-        monkeypatch.setattr('builtins.input',  lambda _: 'Hana:0')
-        assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
+#     def test_invalidprice_add_update_menu(self, monkeypatch):
+#         monkeypatch.setattr('builtins.input',  lambda _: 'Hana:0')
+#         assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
 
-    def test_add_update_menu(self, monkeypatch):
-        monkeypatch.setattr('builtins.input',  lambda _: 'Hana:10')
-        assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0, "Hana": 10.0}   
-        menu = {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
-        with open('Menu.json', 'w') as menu_list:
-            json.dump(menu, menu_list)
+#     def test_add_update_menu(self, monkeypatch):
+#         monkeypatch.setattr('builtins.input',  lambda _: 'Hana:10')
+#         assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0, "Hana": 10.0}   
+#         menu = {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0, "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
+#         with open('Menu.json', 'w') as menu_list:
+#             json.dump(menu, menu_list)
+
+# # Test add_sold_out_stickers function
+# class TestAddUpdateMenu:
+#     def test_invalid_add_sold_out_stickers(self, monkeypatch):
+#         monkeypatch.setattr('sys.stdin', io.StringIO('Winter'))
+#         assert add_sold_out_stickers() == []
+
+#     def test_add_sold_out_stickers(self, monkeypatch):
+#         monkeypatch.setattr('sys.stdin', io.StringIO('Winter Vibes'))
+#         assert add_sold_out_stickers() == ['Winter Vibes']
+
+# # # Test for check_password function
+# def test_password(monkeypatch):
+#     monkeypatch.setattr('builtins.input',  lambda _: 'password')
+#     assert check_password() == False

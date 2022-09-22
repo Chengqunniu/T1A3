@@ -14,7 +14,7 @@ def customer_info():
     table.add_column('Name', style='cyan', no_wrap=True, )
     table.add_column('Rewards Customer', justify='center')
 
-    with open('Non_rewards_customer_list.json', 'rb') as customer:
+    with open('Customer_list.json', 'rb') as customer:
         customer_list = json.load(customer)
     with open('Rewards_customer_list.json', 'rb') as rewards_customer:
         rewards_customer_list = json.load(rewards_customer)

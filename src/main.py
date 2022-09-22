@@ -1,4 +1,5 @@
 import json
+import clearing
 from art import text2art
 from class_for_text import text, display_message
 from display_options import welcome_page
@@ -33,3 +34,5 @@ def main():
 if __name__ == '__main__':
     check_password()
     main()
+    clearing.clear()
+

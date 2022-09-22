@@ -40,6 +40,7 @@ def add_sold_out_stickers():
     stickername = str(sys.stdin.readline().strip())
     stickername_list = stickername.split(',')
     # For loop to check whether the sticker is in menu or not. If yes, update the sold out list. If not, let customer know.
+    sold_out_sticker_list = []
     for x in stickername_list:
         sold_out_stickers = x.strip()
         if sold_out_stickers in menu:
