@@ -29,6 +29,7 @@ def collect_info_and_order():
     customer_name.record_quantity()
     customer_name.repeat_order()
     customer_name.add_membership()
+    customer_name.add_rewards_customer()
     customer_name.calculate_price()
     customer_name.print_receipt()
     customer_name.store_order_history()
