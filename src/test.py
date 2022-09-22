@@ -1,4 +1,5 @@
 import io
+import json
 import pytest
 from collect_info_and_order import collect_info
 from class_for_customer import Customer
@@ -30,7 +31,27 @@ name = Customer('Sam')
 #         monkeypatch.setattr('sys.stdin', io.StringIO('Yum Yum'))
 #         assert name.order() is False
 
-# Test for repeat order function
-def test_repeat_order(monkeypatch):
-    monkeypatch.setattr('sys.stdin', io.StringIO('N'))
-    assert name.repeat_order() is True
+# # Test for repeat order function
+# def test_repeat_order(monkeypatch):
+#     monkeypatch.setattr('sys.stdin', io.StringIO('N'))
+#     assert name.repeat_order() is True
+
+# # Test for add_membership function
+# class TestAddMembership:
+#     def test_add_membership(self):
+#         assert name.add_membership() == ['Alex', 'Sam']
+#         customer_list = ['Alex']
+#         with open('Customer_list.json', 'w', encoding='utf8') as customer:
+#             json.dump(customer_list, customer)
+
+
+#     def test_not_add_rewards_membership(self, monkeypatch):
+#         monkeypatch.setattr('sys.stdin', io.StringIO('N'))
+#         assert name.add_rewards_membership() == ['Alex']
+
+#     def test_add_rewards_membership(self, monkeypatch):
+#         monkeypatch.setattr('sys.stdin', io.StringIO('Y'))
+#         assert name.add_rewards_membership() == ['Alex', 'Sam']
+#         rewards_customer_list = ['Alex']
+#         with open('Rewards_customer_list.json', 'w', encoding='utf8') as rewards_customer:
+#             json.dump(rewards_customer_list, rewards_customer)
