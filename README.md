@@ -1,6 +1,6 @@
 # Terminal Application Documentation
 
-**Link to the GitHub Repository**
+**[Link to the GitHub Repository](https://github.com/Chengqunniu/T1A3)**
 
 **Link to the presentation**
 
@@ -27,7 +27,7 @@ The aim of this application is to develop an order system for a sticker shop. Th
 
 ### Collect customer information
 
-***Due Date:17 Sep***
+***Due Date: 20 Sep***
 
 ***Highest Priority***
 
@@ -43,7 +43,7 @@ Checklist-items:
 
 ### Order stickers and print receipt
 
-***Due Date:17 Sep***
+***Due Date: 20 Sep***
 
 ***Highest Priority***
 
@@ -61,10 +61,11 @@ Checklist-items:
 * Input validation, check whether users enter a valid input
 * Handling errors. If there is an invalid input, give them another chance until receives a valid input
 * Calculate the total cost at the eend and print the receipt
+* Display order time and time when printing receipt
 
 ### Allow customer to join membership and obtain discount
 
-***Due Date:18 Sep***
+***Due Date: 21 Sep***
 
 ***Second Priority***
 
@@ -81,7 +82,7 @@ Checklist-items:
 
 ### Display existing customers information
 
-***Due Date:18 Sep***
+***Due Date: 21 Sep***
 
 ***Second Priority***
 
@@ -96,6 +97,69 @@ Checklist-items:
 * Handling Error, if users enter an invalid input, they will have another chance
 * Display all customers within that group
 
+### Welcome Page of the APP
+
+***Due Date: 21 Sep***
+
+***Last Priority***
+
+Checklist-items:
+
+* Display restaurant name
+* User enters any letter to continue
+* ASCII text to display store name
+* User input password to log in
+* Be able to handle invalid input and allow the user to enter password until correct password received
+
+### Display customer order hisotry
+
+***Due Date: 22 Sep***
+
+***Last Priority***
+
+Checklist-items:
+
+* Use list and dict to collect customer order history
+* Create json file to store and update data
+* Display a message asking which customer they want to check
+* Display a message to tell customer if the name entered is not an existing customer
+* Read data from json file if it is an existing customer
+* Display data as table
+* If customer has no order history, display a message on the terminal
+
+### Display all products
+
+***Due Date: 22 Sep***
+
+***Last Priority***
+
+Checklist-items:
+
+* Read items from json file
+* Store name and price as dictionary
+* Use rich library to generate table
+* Use loop to add item to the table
+* Add the sold out status. If item has been sold out, display ❌, else display ✅
+* Display the Table
+  
+### Add & Update menu
+
+***Due Date: 22 Sep***
+
+***Last Priority***
+
+Checklist-items:
+
+* Read menu from json file
+* Display a message asking user to enter new price or menu item
+* Let the user know if the user enters invalid price. Ignore invalid price and only store valid price
+* Split and strip the input to form the key: value pairs
+* Store input as dictionary
+* Update menu
+* Store into the json file
+* Update item that is out of stock
+* Let the user know if the sticker name entered is invalid if it is not in the menu
+  
 ## Imported Libraries
 
 ---
@@ -105,3 +169,19 @@ Checklist-items:
 * Click
 * Pytest
 * Pendulum
+* Clearing
+* Simple-term-menu
+
+## Resources
+
+---
+
+## Code style
+
+--
+PEP8
+
+## Related Documents
+
+---
+[Help Documentation](/docs/help.md)
