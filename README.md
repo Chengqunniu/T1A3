@@ -4,7 +4,7 @@
 
 **Link to the presentation**
 
-## Purpose of the app and features
+## Purpose of the app and list of features
 
 ---
 The aim of this application is to develop an order system for a sticker shop. This system contains several features:
@@ -20,6 +20,18 @@ The aim of this application is to develop an order system for a sticker shop. Th
 
 * Display existing customers information
   This feature displays all existing customers' information on the terminal, includes their name and membership status. Users could also select to display all or display one category such as non-rewards customer information only.
+
+* Welcome page of the app
+  This feature displays the welcome page of the system. Colored store name will be displayed in the middle of the terminal and the user needs to press enter to continue. Users could also set password and use the password to start the program.
+
+* Display customer order history
+  This feature display customer's order history as table. User select which customer they want to check, and the system will display the order history of that customer.
+
+* Display all products
+  This feature displays all products information as a table. Includes their name, price and whether they have been sold out.
+
+* Add and update menu
+  This feature allow users to add and update products. User could change the price of current products or add new products to the menu list. Users could also record stickers that are sold out.
 
 ## Implementation Plan For Each Feature
 
@@ -79,6 +91,7 @@ Checklist-items:
 * Input validation
 * Handling errors and give user multiple chances until they enter a valid input
 * If answer yes, customers will become rewards customers and have 10% discount for their orders
+* Store two lists in separate json files
 
 ### Display existing customers information
 
@@ -86,7 +99,7 @@ Checklist-items:
 
 ***Second Priority***
 
-This feature will be implemented using two lists created for non-rewards customers and rewrads customers, and user choose to display all or one of these two lists.
+This feature will be implemented using two lists created for non-rewards customers and rewrads customers. Each will be stored in its own json file. Users choose to display one of the list as a table.
 
 Checklist-items:
 
@@ -95,6 +108,7 @@ Checklist-items:
 * Users select one or both groups
 * Input validation(only integer 1 and 2, 1 is non-rewards customer, 2 is rewards customer)
 * Handling Error, if users enter an invalid input, they will have another chance
+* Retrieve data from json file
 * Display all customers within that group
 
 ### Welcome Page of the APP
@@ -102,6 +116,8 @@ Checklist-items:
 ***Due Date: 21 Sep***
 
 ***Last Priority***
+
+This feature will be implemented using ASCII text to display store name. And then use rich module to display colored text on the terminal. Users could also create their own password via bash script and they need to enter the password at the begging of the program. If they enter wrong password, they have chance to enter again.
 
 Checklist-items:
 
@@ -116,6 +132,8 @@ Checklist-items:
 ***Due Date: 22 Sep***
 
 ***Last Priority***
+
+This feature use list and dictionary to collect customer's order hisotry and store it into a json file. Each customer's order history will be an item of the list. Within each item, each order will be stored as a dictionary. Users could select which customer they want to check, if the name entered is an existing customer, the system will display the order hisotry of that customer as a table. If that customer does not have an order hisotry, the system will display a message to let the user know. If the name entered is not an existing customer, users have chance to enter again.
 
 Checklist-items:
 
@@ -133,6 +151,8 @@ Checklist-items:
 
 ***Last Priority***
 
+This feature retrieve menu items from the json file. Use loop to go through the menu file and sold out file. Then display them as a table. 
+
 Checklist-items:
 
 * Read items from json file
@@ -148,6 +168,8 @@ Checklist-items:
 
 ***Last Priority***
 
+This feature ask the user to enter the name and price of the sticker they want to add or update. Then split them, remove the space and store them as a dictionary in the json file. If users enter wrong format or invalid input, the system will let them know. Users could also add sold out stickers to the sold out json file. They will have another chance as well if they enter an invalid input.
+
 Checklist-items:
 
 * Read menu from json file
@@ -159,27 +181,66 @@ Checklist-items:
 * Store into the json file
 * Update item that is out of stock
 * Let the user know if the sticker name entered is invalid if it is not in the menu
-  
-## Imported Libraries
+
+## Testing
 
 ---
 
-* Rich, from [Rich](https://rich.readthedocs.io/en/stable/tables.html)
-* Art
-* Click
-* Pytest
-* Pendulum
-* Clearing
-* Simple-term-menu
+ Feature     | Expexted Outcome      | Actual Outcome    | Any remaining issue?   |
+| ------------- | ------------- | -------- |-------- |
+|           | Test Script Tests        |  |  |
+| Check password           | System reads password from json file and compare with user's input. If user enters correct password, the system will execute main program. If user enters wrong password, or invalid format of password, the system will display a message asking them to enter again. Until user enters the correct password.         | As expected | Nil |
+| Collect customer information when user enters a number          | System will display a message asking user to enter customer's name. A valid name could only be a string, not a number. Python could convert a float into a string, but will raise ValueError when converting a string into a float. Therefore, I try to convert user input into float.  If user enters a number, the system will run try section and display a message asking them to enter again.    | As expected  | Nil  |
+| Collect customer information when user enters a string          | If user enters a string, the system will raise ValueError and excute exception part to break the loop.              | As expected  | Nil  |
+| Order stickers with valid name          | If user enters a sticker name that within the menu list. System will proceed to asking the quantity of that sticker.         | As expected  | Nil  |
+| Order stickers with invalid name           | If user enters a sticker name  that not in the menu list. System will display a message asking them to enter again.        | As expected  | Nil  |
+| Repeat order           | System displays a message asking whether the customer want to order another sticker. User input Y or N. Loop will stop if user enter N.         | As expected  | Nil  |
+| Add membership for all customers           | Each customer will be automatically added into the customer list         | As expected  | Nil  |
+| Add rewards membership with input N         | Display a message asking the user whether the customer would like to become rewards customer. Customer will not be added into the rewards customer list with input N.         | As expected  | Nil  |
+| Add rewards membership with input Y         | Customer will be added into the rewards customer list with input Y.         | As expected  | Nil  |
+| Add and update menu with correct format           | Display a message asking user to enter sticker's name and its price as key:value pair. The system uses try/except to check the price entered. It will try to convert the price into a float. If it raises ValueError, the system will display a message saying the related sticker will not be added to the menu.  If user enters a number, but it is a negative value. The system will also display a messagee saying the related sticker will not be added to the menu.    | As expected  | Nil  |
+| Add and update menu with incorrect format          | User enters a string as the price, system displays the message above.         | As expected  | Nil  |
+| Add and update menu with negative value          | User enters a negative value as the price, system displays the message above.         | As expected  | NiL  |
+| Add sold out stickers that within the menu list         | Display a message asking user to enters stickers that already sold out. System will check whether the user has entered valid sticker names. If users enters sticker names that can be found within the menu list, these stickers will be added to the sold out list.       | As expected  | Nil  |
+| Add sold out stickers that not within the menu list     | If user enters a name that can not be found in the menu, system will displays a message to remind user that this sticker will not be added to the sold out list.          | As expected | Nil  |
+|            | Manual Tests        |   |  |
+| Welcome page store name           | Use ASCII text to display store name        | As expected  | Nil  |
+| Welcome page press enter to continue         | Display a colored message 'press enter to continue', and user could press enter to continue.        | As expected | Nil  |
+| System menu with different options           | Display several options for users to choose and operate choosing functions.         | As expected  | Nil  |
+| Record quantity ordered for each sticker with valid input      | Display a message asking how many sticker that customer want to order. User input a integer greater than 0, and system continue.         | As expected  | Nil  |
+| Record quantity ordered for each sticker with invalid input(string or float)          | User enters a string instead of a number. System will raise ValueError and ask the user to enter again.         | As expected  | Nil  |
+| Record quantity ordered for each sticker with invalid input(negative integer)            | User enters a negative integer or 0. System will ask the user to enter again.        | As expected  | Nil  |
+| Calculate price for customer(non-rewards)           | Calculate the total price for all stickers ordered with no discount         | As expected  | Nil  |
+| Calculate price for rewards customer           | Calculate the total price for all stickers ordered with 10% discount          | As expected  | Nil  |
+| Print receipt for each customer           | Print a receipt after each order, includes order time, customer name, ordered items, price for each item, quantity ordered for each item, discount, total price and receipt print time.        | As expected  | Nil  |
+| Store order hisotry for each customer           | After each order, system will store the order into the customer_order_history file.         | As expected  | Nil  |
+| Set up time           | Display ordering time and receipt printing time on the receipt         | As expected  | Nil  |
+| Display customer information(non-rewards)           | User has to choose 1 for non-rewards customer and 2 for rewards customer. Then the system will create a table with two columns, customer's name and whether they are rewards customer. If customer select 1 for non-rewards customer, system will display non-rewards customers in a table. And it will show ❌ to indicate they are not rewards customer.        | As expected  | Nil  |
+| Display customer information(rewards)           | If user selects 2 for rewards customer. The system will display rewards customer in a table. And it will show   ✅ to indicate they are rewards customer.     | As expected  | Nil  |
+| Display customer information(invalid input)          | Use try/except to check user input. Try to covert input into an integer. If user enter a string or float, it will raise ValueError and ask user to enter again. Also use control statement to control the flow, if user enter number other than 1 and 2, will repeat the loop and user have to enter again.        | As expected  | Nil  |
+| Check customer order history with valid name (customer has order history)           | Display customer order history as a table, includes customer name, order items and prices. Each order will on a single line.        | As expected  | Nil  |
+| Check customer order history with valid name (customer has no order history)          | Display a message indicate that this customer does not have order history.         | As expected  | Nil  |
+| Check customer order history with invalid name          | If user enter a name that is not a customer of the store, the system will ask the user to enter the name again. If user enter a number, the loop will repeat as well.         | As expected  | Nil  |
+| Display all products           | Display all products in a table. The table has three columns, item name, price and whether it is sold | As expected | Nil  |
 
-## Resources
+## Imported Libraries & Resources
 
 ---
+
+* Rich. Available at: <https://rich.readthedocs.io/en/stable/tables.html>
+* Art. Available at: <https://https://pypi.org/project/art/>
+* Click. Available at: <https://pypi.org/project/click/>
+* Pytest. Available at: <https://pypi.org/project/pytest/>
+* Pendulum. Available at: <https://pypi.org/project/pendulum/2.1.2/>
+* Clearing. Available at: <https://pypi.org/project/clearing/>
+* Simple-term-menu. Available at: <https://pypi.org/project/simple-term-menu/>
 
 ## Code style
 
---
+---
 PEP8
+
+Peps.python.org. n.d. PEP 8 – Style Guide for Python Code | peps.python.org. [online] Available at: <https://peps.python.org/pep-0008/> [Accessed 22 September 2022].
 
 ## Related Documents
 
