@@ -2,7 +2,6 @@ import sys
 import json
 
 
-
 with open('Menu.json', 'rb') as menu_list:
     menu = json.load(menu_list)
 
@@ -28,8 +27,7 @@ class Customer:
             sticker = str(sys.stdin.readline().strip())
             return False
         return True
-
-        
+         
     def record_quantity(self):
         '''check whether the quantity input is integer and greater than zero
         '''
