@@ -1,5 +1,6 @@
 import sys
 import json
+import pendulum as pdl
 
 
 with open('Menu.json', 'rb') as menu_list:
@@ -16,12 +17,16 @@ class Customer:
         global sticker
         global order
         global number_of_stickers
+        global order_time
 
+        order_time = set_time()
         number_of_stickers = []
         order = []
-        sys.stdout.write('Enter the sticker name [Enter a valid sticker only, e.g. Yum Yum Hana]:\n')
+        sys.stdout.write('''Enter the sticker name 
+        [Enter a valid sticker only, e.g. Yum Yum Hana]:\n''')
         sticker = str(sys.stdin.readline().strip())
-        # While loop to check whether the input sticker name is in the Menu. If not in the Menu, then the while loop will keep looping.
+        # While loop to check whether the input sticker name is in the Menu. 
+        # If not in the Menu, then the while loop will keep looping.
         while sticker not in menu:   
             sys.stdout.write('Please enter a valid sticker name:'+ '\n')
             sticker = str(sys.stdin.readline().strip())
@@ -35,7 +40,8 @@ class Customer:
         
         # While loop to check the input and give user another change if the input is invalid.
         while quantity_is_float:
-            sys.stdout.write('Enter the sticker quantity [Enter a positive integer only, e.g. 1, 2, 3]:\n')
+            sys.stdout.write('''Enter the sticker quantity 
+            [Enter a positive integer only, e.g. 1, 2, 3]:\n''')
             quantity = (sys.stdin.readline().strip())
             # Use try-except to exclude float, 0, negative and input that not a number.
             try:
@@ -52,7 +58,7 @@ class Customer:
         '''
         valid = False
        
-        # While loop to check whether customers need to order anthor sticker or not.     
+        # While loop to check whether customers need to order anthor sticker or not.
         while not valid:
             sys.stdout.write('Want to order another sticker? ' + 'Y or N' + '\n')
             another_sticker = str(sys.stdin.readline().strip())
@@ -103,7 +109,9 @@ class Customer:
         if self.name not in rewards_customer_list:
             valid = False
             while not valid:
-                sys.stdout.write('The customer is not in the rewards program. Does the customer want to join the rewards program' + '\n' + '[Enter Y/N]?' +'\n')
+                sys.stdout.write('''The customer is not in the rewards program. 
+                Does the customer want to join the rewards program''' + '\n'
+                 + '[Enter Y/N]?' +'\n')
                 answer = str(sys.stdin.readline().strip())
             # Check whether the answer is valid.
                 if answer == 'Y' or answer == 'N':
@@ -132,21 +140,27 @@ class Customer:
     def print_receipt(self):
         '''Print receipt
         '''
-        print('*' * 50)
-        print('Receipt of Customer' + ' ' + str(self.name))
-        print('*' * 50)
+        receipt_time = set_time()
         # This function is to align the line of the receipt
-        receipt_line = lambda left, right: (f'{left:25}  {str(right):>25}') +'\n'
-       
+        receipt_line = lambda left, right: (f'{left:25}  {str(right):>45}') +'\n'
+        Line_1 = str(order_time)
+        sys.stdout.write(receipt_line('Ordering time', Line_1))
+        print()
+        print('*' * 70)
+        print('Receipt of Customer' + ' ' + str(self.name))
+        print('*' * 70)     
         # Use for loop to display each sticker on a single line on the receipt.
         for sticker_index, sticker_name in enumerate(order):      
             unit_price = menu[sticker_name]
-            Line_1 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[sticker_index])
-            sys.stdout.write(receipt_line(str(sticker_name + ':'), Line_1))
-        Line_2 = str(discount) + '(AUD)'
-        Line_3 = str(total_cost) + '(AUD)'
-        sys.stdout.write(receipt_line('Discount:', Line_2))
-        sys.stdout.write(receipt_line('Total Cost:', Line_3))  
+            Line_2 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[sticker_index])
+            sys.stdout.write(receipt_line(str(sticker_name + ':'), Line_2))
+        Line_3 = str(discount)
+        Line_4 = str(total_cost) + '(AUD)'
+        Line_5 = str(receipt_time)
+        sys.stdout.write(receipt_line('Discount:', Line_3))
+        sys.stdout.write(receipt_line('Total Cost:', Line_4))  
+        print('*' * 70)
+        sys.stdout.write(receipt_line('Printing time', Line_5))
 
     def search_rewards_customer(self):
         '''Retrieve rewards customer information
@@ -189,3 +203,11 @@ class Customer:
             customer_order_history = json.load(search_history)
 
         return customer_order_history
+
+def set_time():
+    '''Set the time
+    '''
+    dt = pdl.now()
+    time = dt.format('DD MMMM YYYY, dddd HH:mm:ss A')
+    
+    return time

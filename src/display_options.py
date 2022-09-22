@@ -25,6 +25,7 @@ def welcome_page():
     4: Add update menu items
     5: Add sold out menu items
     6: Display products
+    0: Exit the system
     ''' + '\n')
     sys.stdout.write('#' * 40 + '\n')
     # If customer does not enter a correct number, it will keep asking them to enter a right number.
