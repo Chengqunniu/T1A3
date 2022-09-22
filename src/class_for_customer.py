@@ -105,6 +105,10 @@ class Customer:
             customer_order_history.append([])
             with open('Customer_order_history.json', 'w', encoding='utf8') as add_history:
                 json.dump(customer_order_history, add_history)
+        
+        return customer_list
+    
+    def add_rewards_membership(self):
         self.search_rewards_customer()
         if self.name not in rewards_customer_list:
             valid = False
@@ -119,6 +123,7 @@ class Customer:
             if answer == 'Y':
                 sys.stdout.write('Successfully add the customer to the rewards program' + '\n')
                 self.add_rewards_customer()
+                
         return rewards_customer_list
         
     def store_order_history(self):
