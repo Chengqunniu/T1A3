@@ -19,7 +19,7 @@ from class_for_customer import Customer
 #             name == float(name)
 
 # Test for order function
-# name = Customer('Sam')
+name = Customer('Sam')
 
 # class TestOrderFunction:
 #     def test_order(self, monkeypatch):
@@ -29,3 +29,8 @@ from class_for_customer import Customer
 #     def test_invalid_order(self, monkeypatch):
 #         monkeypatch.setattr('sys.stdin', io.StringIO('Yum Yum'))
 #         assert name.order() is False
+
+# Test for repeat order function
+def test_repeat_order(monkeypatch):
+    monkeypatch.setattr('sys.stdin', io.StringIO('N'))
+    assert name.repeat_order() is True
