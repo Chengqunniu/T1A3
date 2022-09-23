@@ -10,28 +10,56 @@
 The aim of this application is to develop an order system for a sticker shop. This system contains several features:
 
 * Collect customer's information
+  
   This feature allows users to collect and store customer's name. Customer's name will be stored in the system and later used by other features. For example, customer's name will be displayed on the receipt.
 
+  ![image for this feature](/docs/Collect_customer_info.png)
+
 * Order stickers and print receipt
+  
   This is the main feature of this application. This feature allows users to place multiple orders for customers and print receipt for the customer.
 
+  ![image for this feature](/docs/Order_and_print_receipt.png)
+  
 * Allow customers to join membership and obtain discount
+  
   This feature will add all customers to the non-rewards customer list. It will also ask whether these non-rewards customers would like to join membership. If they decide to join the memebership, they will become rewards customers and have 10% discount of their orders.
 
-* Display existing customers information
-  This feature displays all existing customers' information on the terminal, includes their name and membership status. Users could also select to display all or display one category such as non-rewards customer information only.
+  ![image for this feature](/docs/Add_memberiship.png)
+
+* Display existing customers' information
+  
+  This feature displays all existing customers' information on the terminal, includes their name and membership status. Users could also select to display non-rewards customers'  or rewaruds customers' information.
+
+  ![image for this feature](/docs/Display_customer_information.png)
 
 * Welcome page of the app
+  
   This feature displays the welcome page of the system. Colored store name will be displayed in the middle of the terminal and the user needs to press enter to continue. Users could also set password and use the password to start the program.
+  
+  ![image for this feature](/docs/Welcome_page.png)
 
 * Display customer order history
-  This feature display customer's order history as table. User select which customer they want to check, and the system will display the order history of that customer.
+  
+  This feature displays customer's order history as a table. Users select which customer they want to check, and the system will displays the order history of that customer.
+
+  ![image for this feature](/docs/Display_customer_order_history.png)
 
 * Display all products
+  
   This feature displays all products information as a table. Includes their name, price and whether they have been sold out.
 
+  ![image for this feature](/docs/Display_all_products.png)
+
 * Add and update menu
-  This feature allow users to add and update products. User could change the price of current products or add new products to the menu list. Users could also record stickers that are sold out.
+  
+  This feature allow users to add and update products. User could change the price of current products or add new products to the menu list.
+
+  ![image for this feature](/docs/Add_and_update_menu_items.png)
+
+  Users could also record stickers that are sold out.
+
+  ![image for this feature](/docs/Add_sold_out_stickers.png)
 
 ## Implementation Plan For Each Feature
 
@@ -192,14 +220,12 @@ Checklist-items:
 | Check password           | System reads password from json file and compare with user's input. If user enters correct password, the system will execute main program. If user enters wrong password, or invalid format of password, the system will display a message asking them to enter again. Until user enters the correct password.         | As expected | Nil |
 | Collect customer information when user enters a number          | System will display a message asking user to enter customer's name. A valid name could only be a string, not a number. Python could convert a float into a string, but will raise ValueError when converting a string into a float. Therefore, I try to convert user input into float.  If user enters a number, the system will run try section and display a message asking them to enter again.    | As expected  | Nil  |
 | Collect customer information when user enters a string          | If user enters a string, the system will raise ValueError and excute exception part to break the loop.              | As expected  | Nil  |
-| Order stickers with valid name          | If user enters a sticker name that within the menu list. System will proceed to asking the quantity of that sticker.         | As expected  | Nil  |
-| Order stickers with invalid name           | If user enters a sticker name  that not in the menu list. System will display a message asking them to enter again.        | As expected  | Nil  |
 | Repeat order           | System displays a message asking whether the customer want to order another sticker. User input Y or N. Loop will stop if user enter N.         | As expected  | Nil  |
 | Add membership for all customers           | Each customer will be automatically added into the customer list         | As expected  | Nil  |
 | Add rewards membership with input N         | Display a message asking the user whether the customer would like to become rewards customer. Customer will not be added into the rewards customer list with input N.         | As expected  | Nil  |
 | Add rewards membership with input Y         | Customer will be added into the rewards customer list with input Y.         | As expected  | Nil  |
 | Add and update menu with correct format           | Display a message asking user to enter sticker's name and its price as key:value pair. The system uses try/except to check the price entered. It will try to convert the price into a float. If it raises ValueError, the system will display a message saying the related sticker will not be added to the menu.  If user enters a number, but it is a negative value. The system will also display a messagee saying the related sticker will not be added to the menu.    | As expected  | Nil  |
-| Add and update menu with incorrect format          | User enters a string as the price, system displays the message above.         | As expected  | Nil  |
+| Add and update menu with incorrect format          | User enters a string as the price, system displays the message above. If users enter a string instead of key:value pair, system will raise IndexError and repeat the process to ask users to enter again.        | As expected  | Nil  |
 | Add and update menu with negative value          | User enters a negative value as the price, system displays the message above.         | As expected  | NiL  |
 | Add sold out stickers that within the menu list         | Display a message asking user to enters stickers that already sold out. System will check whether the user has entered valid sticker names. If users enters sticker names that can be found within the menu list, these stickers will be added to the sold out list.       | As expected  | Nil  |
 | Add sold out stickers that not within the menu list     | If user enters a name that can not be found in the menu, system will displays a message to remind user that this sticker will not be added to the sold out list.          | As expected | Nil  |
@@ -207,6 +233,8 @@ Checklist-items:
 | Welcome page store name           | Use ASCII text to display store name        | As expected  | Nil  |
 | Welcome page press enter to continue         | Display a colored message 'press enter to continue', and user could press enter to continue.        | As expected | Nil  |
 | System menu with different options           | Display several options for users to choose and operate choosing functions.         | As expected  | Nil  |
+| Order stickers with valid name          | If user enters a sticker name that within the menu list. System will proceed to asking the quantity of that sticker.         | As expected  | Nil  |
+| Order stickers with invalid name           | If user enters a sticker name  that not in the menu list. System will display a message asking them to enter again.        | As expected  | Nil  |
 | Record quantity ordered for each sticker with valid input      | Display a message asking how many sticker that customer want to order. User input a integer greater than 0, and system continue.         | As expected  | Nil  |
 | Record quantity ordered for each sticker with invalid input(string or float)          | User enters a string instead of a number. System will raise ValueError and ask the user to enter again.         | As expected  | Nil  |
 | Record quantity ordered for each sticker with invalid input(negative integer)            | User enters a negative integer or 0. System will ask the user to enter again.        | As expected  | Nil  |
@@ -215,7 +243,7 @@ Checklist-items:
 | Print receipt for each customer           | Print a receipt after each order, includes order time, customer name, ordered items, price for each item, quantity ordered for each item, discount, total price and receipt print time.        | As expected  | Nil  |
 | Store order hisotry for each customer           | After each order, system will store the order into the customer_order_history file.         | As expected  | Nil  |
 | Set up time           | Display ordering time and receipt printing time on the receipt         | As expected  | Nil  |
-| Display customer information(non-rewards)           | User has to choose 1 for non-rewards customer and 2 for rewards customer. Then the system will create a table with two columns, customer's name and whether they are rewards customer. If customer select 1 for non-rewards customer, system will display non-rewards customers in a table. And it will show ❌ to indicate they are not rewards customer.        | As expected  | Nil  |
+| Display customer information(non-rewards)           | User has to choose 1 for non-rewards customer and 2 for rewards customer. Then the system will create a table with two columns, customer's name and whether they are rewards customer. If customer select 1 for non-rewards customer, system will display non-rewards customers in a table. And it will show ❌ to indicate they are not rewards customer. If all customers are rewards customers, it will display a message on the terminal to remind the user.       | As expected  | Nil  |
 | Display customer information(rewards)           | If user selects 2 for rewards customer. The system will display rewards customer in a table. And it will show   ✅ to indicate they are rewards customer.     | As expected  | Nil  |
 | Display customer information(invalid input)          | Use try/except to check user input. Try to covert input into an integer. If user enter a string or float, it will raise ValueError and ask user to enter again. Also use control statement to control the flow, if user enter number other than 1 and 2, will repeat the loop and user have to enter again.        | As expected  | Nil  |
 | Check customer order history with valid name (customer has order history)           | Display customer order history as a table, includes customer name, order items and prices. Each order will on a single line.        | As expected  | Nil  |
@@ -245,4 +273,76 @@ Peps.python.org. n.d. PEP 8 – Style Guide for Python Code | peps.python.org. [
 ## Related Documents
 
 ---
-[Help Documentation](/docs/help.md)
+Help Documentation can be found [here](/docs/help.md)
+
+### Installation Instructions
+
+---
+
+1. Open the command line or terminal.
+2. Type `python3 --version` to check whether python has been installed.
+3. If you do not have python installed on your computer,
+   please go to this [page](https://www.python.org/downloads/) to install python.
+4. Type `pip --version` to check whether pip has been installed.
+5. If you do not have pip installed on your computer,
+   please go to thie [page](https://pip.pypa.io/en/stable/installation/) to install pip.
+6. Copy the following command to the terminal to clone the program:
+
+    `git clone https://github.com/Chengqunniu/T1A3.git`
+7. Copy the following command to navigate to the src folder:
+
+    `cd src`
+8. Copy the following command to install all dependencies
+
+    `pip install -r requirements.txt`
+9. There are four executable files you can choose to run the file. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
+
+### Dependencies
+
+---
+
+Please install all modules within the [Requirement.txt](../src/requirement.txt)
+
+### System requirements
+
+---
+No requirements
+
+### Command line argments to execute the program
+
+---
+There are five executable files you can choose to run the file.
+
+Note: You have to use `chmod +x file name` to obtain permissions before running the following commands.
+file name is the `xxxxx.sh`
+
+* start_system.sh
+
+    `Command: ./start_system.sh`
+
+    You should run this file first to set the password of your system.
+    And check whether you have installed python properly.
+    Then you can chose any of the three below
+
+* full_options.sh
+  
+    `Command: ./full_options.sh`
+
+    This file will run the whole system.
+* order_only.sh
+  
+    `Command: ./order_only.sh`
+
+    This file will only allow you to order stickers for the customer.
+
+* display_info.sh
+
+    `Command: ./display_info.sh`
+
+    This fille will only display selected customer's information.
+
+* help.sh
+  
+    `Command: ./help.sh`
+
+    This file will display the content of this help document.

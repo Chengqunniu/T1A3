@@ -35,7 +35,10 @@ No requirements
 ## Command line argments to execute the program
 
 ---
-There are four executable files you can choose to run the file.
+There are five executable files you can choose to run the file.
+
+Note: You have to use `chmod +x file name` to obtain permissions before running the following commands.
+file name is the `xxxxx.sh`
 
 * start_system.sh
 
@@ -60,4 +63,10 @@ There are four executable files you can choose to run the file.
 
     `Command: ./display_info.sh`
 
-    This fille will only display selected customer information.
+    This fille will only display selected customer's information.
+
+* help.sh
+  
+    `Command: ./help.sh`
+
+    This file will display the content of this help document.
