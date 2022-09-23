@@ -17,6 +17,7 @@ def add_update():
                           + 'sticker_1 : price_1, sticker_2: price_2\n').strip())
         string_list = string.split(',')
         new_menu_list = []
+
         # For loop to update the stickers and prices
         for x in string_list:  #obtain each sticker and their cost as a single string
             change_list = x.split(':')    
@@ -35,13 +36,14 @@ def add_update():
             except ValueError:
                 print('The price entered for' + ' ' + str(new_menu_list[0] +' ' + 'is not valid'))
             new_menu_list = []
+
         with open('Menu.json', 'w', encoding='utf8') as menu_list:
             json.dump(menu, menu_list)
 
         return menu
+
     except IndexError:
         add_update()
-
 
 
 def add_sold_out_stickers():

@@ -1,5 +1,6 @@
 import sys
 import json
+from rich.prompt import Prompt
 import pendulum as pdl
 
 
@@ -29,15 +30,11 @@ class Order:
         sticker = str(sys.stdin.readline().strip())
         # While loop to check whether the input sticker name is in the Menu. 
         # If not in the Menu, then the while loop will keep looping.
-        while sticker not in menu:   
+        while sticker not in menu:          
             sys.stdout.write('Please enter a valid sticker name:'+ '\n')
             sticker = str(sys.stdin.readline().strip())
 
-            return False
-
-        return True
          
-
     def record_quantity(self):
         '''check whether the quantity input is integer and greater than zero
         '''

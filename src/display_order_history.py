@@ -2,6 +2,7 @@ import sys
 from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
+from rich.prompt import Prompt
 from class_for_customer import Customer
 from class_for_text import display_message
 
@@ -14,9 +15,8 @@ def check_history():
     message3 = display_message('You have selected to display the customer order history')
     message3.color()
 
-    sys.stdout.write('Please enter a customer name '
-                    'for checking order history:' + '\n')
-    name = sys.stdin.readline().strip()
+    name = Prompt.ask('Please enter a customer name '
+                    'for checking order history')
     customer_name= Customer(name)
     customer_list = customer_name.search_customer()
     Valid_customer_name = True

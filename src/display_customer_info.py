@@ -1,6 +1,7 @@
 import json
 from rich.console import Console
 from rich.table import Table
+from rich.prompt import Prompt
 from class_for_text import display_message
 
 
@@ -40,9 +41,9 @@ def customer_info():
                     table.add_row(name, '✅')
                     valid = False
             else:
-                number = input('Please enter a valid number' + '\n').strip()
+                number = input('Please enter a valid number: ').strip()
         except ValueError:
-            number = input('Please enter a valid number' + '\n').strip()
+            number = Prompt.ask('Please enter a valid number').strip()
 
 
     console = Console()

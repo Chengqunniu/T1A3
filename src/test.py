@@ -32,24 +32,6 @@ class TestCollectInfo:
 name = Customer('Sam')
 customer = Order('Sam')
 
-
-class TestOrderFunction:
-    '''Test order function
-    '''
-    def test_order(self, monkeypatch):
-        '''Sticker name in the menu
-        '''
-        monkeypatch.setattr('sys.stdin', io.StringIO('Yum Yum Hana'))
-        assert customer.order() is True
-
-
-    def test_invalid_order(self, monkeypatch):
-        '''Sticker name not in the menu
-        '''
-        monkeypatch.setattr('sys.stdin', io.StringIO('Yum Yum'))
-        assert customer.order() is False
-
-
 # Test for repeat order function
 def test_repeat_order(monkeypatch):
     '''Test repeat order function
