@@ -1,15 +1,16 @@
 import json
-from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
+from class_for_text import display_message
 
 
 def customer_info():
     '''Display customer information as a table
     '''
-    rprint('SmoonyPaws')
-
-    table = Table(title='Customer Information', show_lines=True)
+    message2 = display_message('You have select to display the customer information')
+    message2.color()
+    
+    table = Table(title='Customer Information', title_style='yellow', show_lines=True)
 
     table.add_column('Name', style='cyan', no_wrap=True, )
     table.add_column('Rewards Customer', justify='center')

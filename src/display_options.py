@@ -12,6 +12,7 @@ from simple_term_menu import TerminalMenu
 press_enter = text('Press enter to continue...')
 message2 = text('Welcome to the Smoonypaws ordering system!' )
 
+
 def welcome_page():
     options = ['1: Collect information & Order stickers',
      '2: Display existing customer information',

@@ -2,6 +2,7 @@ import json
 import click
 from class_for_text import text
 
+
 @click.command()
 @click.option(
     "--password", prompt=True, hide_input=True,

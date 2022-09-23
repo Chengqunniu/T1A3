@@ -6,7 +6,7 @@ from class_for_customer import Customer, Order
 
 def collect_info():
     '''Collect customers' name'''
-    message1 = display_message('Pleas press enter to order')
+    message1 = display_message('You have select to place order for customers')
     message1.color()
     sys.stdout.write('Enter the name of the customer:' + '\n')
     
@@ -24,6 +24,7 @@ def collect_info():
             sys.stdout.write('please enter a valid name, not number\n')
 
     return name
+
 
 def collect_info_and_order():
 

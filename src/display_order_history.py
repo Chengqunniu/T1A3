@@ -3,12 +3,17 @@ from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
 from class_for_customer import Customer
+from class_for_text import display_message
 
 def check_history():
     '''
     Check customer order history
     '''
     global customer_name
+
+    message3 = display_message('You have select to display the customer order history')
+    message3.color()
+
     sys.stdout.write('Please enter a customer name'
                     'for checking order history:' + '\n')
     name = sys.stdin.readline().strip()
@@ -39,8 +44,8 @@ def check_history():
     else:
         rprint('Customer order history')
 
-        table = Table(title='This is the order history of' + ' ' 
-                      + str(name), title_style = 'bold red', show_lines=True)
+        table = Table(title='This is the order history of' + ' '
+                     + str(name), title_style = 'bold red', show_lines=True)
 
         table.add_column('Orders', style='green')
         table.add_column('Stickers', style='yellow', no_wrap=True)

@@ -2,11 +2,13 @@ import json
 from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
+from class_for_text import display_message
 
 
 def display_products():
-    rprint('Product list:')
-
+    
+    message6 = display_message('You have select to display all products')
+    message6.color()
     table = Table(title='This is the product list', 
                  title_style = 'bold red', show_lines=True)
 

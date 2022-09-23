@@ -4,6 +4,7 @@ from art import text2art
 from class_for_text import text, display_message
 from display_options import welcome_page
 
+
 def check_password():
     '''Check password
     '''
@@ -18,6 +19,7 @@ def check_password():
             password = input('Enter your password again:')
 
     return correct
+
 
 def main():
     '''Main program

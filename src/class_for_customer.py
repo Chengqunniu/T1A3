@@ -11,6 +11,7 @@ class Order:
     def __init__(self, name):
         self.name = name
     
+
     def order(self):
         '''order stickers
         '''
@@ -22,6 +23,7 @@ class Order:
         order_time = set_time()
         number_of_stickers = []
         order = []
+
         sys.stdout.write('''Enter the sticker name 
         [Enter a valid sticker only, e.g. Yum Yum Hana]:\n''')
         sticker = str(sys.stdin.readline().strip())
@@ -30,9 +32,12 @@ class Order:
         while sticker not in menu:   
             sys.stdout.write('Please enter a valid sticker name:'+ '\n')
             sticker = str(sys.stdin.readline().strip())
+
             return False
+
         return True
          
+
     def record_quantity(self):
         '''check whether the quantity input is integer and greater than zero
         '''
@@ -52,6 +57,7 @@ class Order:
                 quantity_is_float = True
         order.append(sticker)
         number_of_stickers.append(quantity)
+
 
     def repeat_order(self):
         '''Used for repeat order.
@@ -76,6 +82,7 @@ class Order:
                 sticker = new_sticker_name
                 self.record_quantity()
 
+
     def calculate_price(self):
         '''calculate the price
         '''
@@ -89,7 +96,7 @@ class Order:
             base_price += price
         Customer.search_rewards_customer(self)
         if self.name in rewards_customer_list:
-            total_cost= float(base_price * 9/10)
+            total_cost = float(base_price * 9/10)
             discount = str('-10%')
         else:
             total_cost = base_price
@@ -122,6 +129,7 @@ class Order:
         print('*' * 70)
         sys.stdout.write(receipt_line('Printing time', Line_5))
 
+
 def set_time():
     '''Set the time
     '''
@@ -135,6 +143,7 @@ class Customer:
     def __init__(self, name):
         self.name = name
    
+
     def add_membership(self):
         '''Add customer to the customer list
         '''
@@ -148,6 +157,7 @@ class Customer:
         
         return customer_list
   
+
     def add_rewards_membership(self):
         self.search_rewards_customer()
         if self.name not in rewards_customer_list:
@@ -165,7 +175,8 @@ class Customer:
                 self.add_rewards_customer()
                 
         return rewards_customer_list
-        
+
+
     def store_order_history(self):
         '''Store customer order histories
         '''
@@ -182,6 +193,7 @@ class Customer:
         with open('Customer_order_history.json', 'w', encoding='utf8') as add_history:
             json.dump(customer_order_history, add_history)
     
+
     def search_rewards_customer(self):
         '''Retrieve rewards customer information
         '''
@@ -190,6 +202,7 @@ class Customer:
         with open('Rewards_customer_list.json', 'rb') as rewards_customer:
             rewards_customer_list = json.load(rewards_customer)
 
+
     def add_rewards_customer(self):
         '''Add customer to the rewards customer
         '''
@@ -197,7 +210,8 @@ class Customer:
         rewards_customer_list.append(self.name)
         with open('Rewards_customer_list.json', 'w', encoding='utf8') as rewards_customer:
             json.dump(rewards_customer_list, rewards_customer)
-          
+
+
     def search_customer(self):
         '''Retrieve customer information
         '''
@@ -207,6 +221,7 @@ class Customer:
 
         return customer_list
 
+
     def add_customer(self):
         '''Add customer to the customer list
         '''
@@ -214,6 +229,7 @@ class Customer:
         customer_list.append(self.name)
         with open('Customer_list.json', 'w', encoding='utf8') as customer:
             json.dump(customer_list, customer)
+
 
     def search_order_history(self):
         '''Retrieve order history
@@ -223,3 +239,4 @@ class Customer:
             customer_order_history = json.load(search_history)
 
         return customer_order_history
+        

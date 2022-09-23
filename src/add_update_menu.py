@@ -1,21 +1,26 @@
 import json
 import sys
+from class_for_text import display_message
 
 
 def add_update():
-    '''Convert the input into a dictionary and update current dictionary for menu.
+    '''Add and update menu items.
+
     Input should be the correct format.
     '''  
+    message4 = display_message('You have select to add and update menu items')
+    message4.color()
+
     search_menu()
     string = str(input('Please enter the new stickers and prices with the following format: '
                       + 'sticker_1 : price_1, sticker_2: price_2\n').strip())
-    string_list = string.split(',')  
+    string_list = string.split(',')
     new_menu_list = []
     # For loop to update the stickers and prices
     for x in string_list:  #obtain each sticker and their cost as a single string
-        change_list = x.split(':')     
-         # Remove space for each string, then form a list. 
-         # Later use for loop to go though the list and update the menu and price.
+        change_list = x.split(':')    
+        # Remove space for each string, then form a list. 
+        # Later use for loop to go though the list and update the menu and price.
         for i in change_list:
             new_sticker = (i.strip())      
             new_menu_list.append(new_sticker)
@@ -34,9 +39,13 @@ def add_update():
 
     return menu
 
+
 def add_sold_out_stickers():
     '''Add sold out stickers
     '''
+    message5 = display_message('You have select to add sold out stickers')
+    message5.color()
+
     sold_out_list()
     search_menu()
     sys.stdout.write('Please add sold out stickers' + '\n')
@@ -57,7 +66,8 @@ def add_sold_out_stickers():
             json.dump(final_sold_out_stickers_list, sold_out)
             
     return final_sold_out_stickers_list
-    
+ 
+
 def search_menu():
     '''Retrieve menu items
     '''
@@ -65,9 +75,11 @@ def search_menu():
     with open('Menu.json', 'rb') as menu_list:
         menu = json.load(menu_list)
 
+
 def sold_out_list():
     '''Retrieve sold out items
     '''
     global sold_out_sticker_list
     with open('Sold_out_list.json', 'rb') as sold_out:
         sold_out_sticker_list = json.load(sold_out)
+        
