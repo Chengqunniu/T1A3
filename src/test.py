@@ -47,29 +47,29 @@ class TestAddMembership:
     def test_add_membership(self):
         '''Automatically add customer to the customer list
         '''
-        assert name.add_membership() == ['Alex', 'Sam']
-        customer_list = ['Alex']
+        assert name.add_membership() == ['Sam']
+        customer_list = []
         with open('Customer_list.json', 'w', encoding='utf8') as customer:
             json.dump(customer_list, customer)
-        customer_ordeer_history = []
+        customer_order_history = []
         with open('Customer_order_history.json',
                  'w', encoding='utf8') as order_history:
-            json.dump(customer_ordeer_history, order_history)
+            json.dump(customer_order_history, order_history)
 
 
     def test_not_add_rewards_membership(self, monkeypatch):
         '''Choosing not to add customers to the rewards customer list
         '''
         monkeypatch.setattr('sys.stdin', io.StringIO('N'))
-        assert name.add_rewards_membership() == ['Alex']
+        assert name.add_rewards_membership() == []
 
 
     def test_add_rewards_membership(self, monkeypatch):
         '''Choosing to add customers to the rewards customer list
         '''
         monkeypatch.setattr('sys.stdin', io.StringIO('Y'))
-        assert name.add_rewards_membership() == ['Alex', 'Sam']
-        rewards_customer_list = ['Alex']
+        assert name.add_rewards_membership() == ['Sam']
+        rewards_customer_list = []
         with open('Rewards_customer_list.json',
                  'w', encoding='utf8') as rewards_customer:
             json.dump(rewards_customer_list, rewards_customer)
@@ -123,6 +123,9 @@ class TestAddSoldOutStickers:
         '''
         monkeypatch.setattr('sys.stdin', io.StringIO('Winter Vibes'))
         assert add_sold_out_stickers() == ['Winter Vibes']
+        final_sold_out_stickers_list = []
+        with open('sold_out_list.json', 'w', encoding='utf8') as sold_out:
+            json.dump(final_sold_out_stickers_list, sold_out)
 
 
 # Test for check_password function
