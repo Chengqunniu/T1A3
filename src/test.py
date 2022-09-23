@@ -69,6 +69,10 @@ class TestAddMembership:
         customer_list = ['Alex']
         with open('Customer_list.json', 'w', encoding='utf8') as customer:
             json.dump(customer_list, customer)
+        customer_ordeer_history = []
+        with open('Customer_order_history.json',
+                 'w', encoding='utf8') as order_history:
+            json.dump(customer_ordeer_history, order_history)
 
 
     def test_not_add_rewards_membership(self, monkeypatch):
