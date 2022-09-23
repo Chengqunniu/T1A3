@@ -6,6 +6,8 @@ from class_for_customer import Customer, Order
 
 def collect_info():
     '''Collect customers' name'''
+    global name
+
     message1 = display_message('You have select to place order for customers')
     message1.color()
     sys.stdout.write('Enter the name of the customer:' + '\n')
@@ -22,16 +24,14 @@ def collect_info():
             return name
         else:
             sys.stdout.write('please enter a valid name, not number\n')
-
+    
     return name
 
-
 def collect_info_and_order():
-
     customer_name = Customer(collect_info())
     customer_name.add_membership()
     customer_name.add_rewards_membership()
-    customer_order = Order(customer_name)
+    customer_order = Order(name)
     customer_order.order()
     customer_order.record_quantity()
     customer_order.repeat_order()
@@ -41,5 +41,5 @@ def collect_info_and_order():
 
 if __name__ == '__main__':
     collect_info_and_order()
-
+    
     print()

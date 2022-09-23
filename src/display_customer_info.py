@@ -27,10 +27,14 @@ def customer_info():
         try:
             number = int(number)
             if number == 1:
-                for name in customer_list:
-                    if name not in rewards_customer_list:
-                        table.add_row(name, '❌')
-                        valid = False
+                if customer_list == rewards_customer_list:
+                    print('All customers are rewards customers')
+                    break
+                else:
+                    for name in customer_list:
+                        if name not in rewards_customer_list:
+                            table.add_row(name, '❌')
+                            valid = False
             elif number == 2:
                 for name in rewards_customer_list:
                     table.add_row(name, '✅')

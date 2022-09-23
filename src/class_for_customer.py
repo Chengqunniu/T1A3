@@ -24,8 +24,8 @@ class Order:
         number_of_stickers = []
         order = []
 
-        sys.stdout.write('''Enter the sticker name 
-        [Enter a valid sticker only, e.g. Yum Yum Hana]:\n''')
+        sys.stdout.write('Enter the sticker name' 
+                        '[Enter a valid sticker only, e.g. Yum Yum Hana]:\n')
         sticker = str(sys.stdin.readline().strip())
         # While loop to check whether the input sticker name is in the Menu. 
         # If not in the Menu, then the while loop will keep looping.
@@ -62,6 +62,8 @@ class Order:
     def repeat_order(self):
         '''Used for repeat order.
         '''
+        global sticker
+
         valid = False
        
         # While loop to check whether customers need to order anthor sticker or not.
@@ -78,7 +80,7 @@ class Order:
                 new_sticker_name = str(sys.stdin.readline().strip())
                 while new_sticker_name not in menu:
                     # Read the new input
-                    new_sticker_name = str(input('Please enter a valid sticker name:').strip())
+                    new_sticker_name = str(input('Please enter a valid sticker name:\n').strip())
                 sticker = new_sticker_name
                 self.record_quantity()
 
@@ -163,8 +165,8 @@ class Customer:
         if self.name not in rewards_customer_list:
             valid = False
             while not valid:
-                sys.stdout.write('''The customer is not in the rewards program. 
-                Does the customer want to join the rewards program''' + '\n'
+                sys.stdout.write('The customer is not in the rewards program.' 
+                'Does the customer want to join the rewards program' + '\n'
                  + '[Enter Y/N]?' +'\n')
                 answer = str(sys.stdin.readline().strip())
             # Check whether the answer is valid.
