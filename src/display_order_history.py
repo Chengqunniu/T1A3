@@ -11,10 +11,10 @@ def check_history():
     '''
     global customer_name
 
-    message3 = display_message('You have select to display the customer order history')
+    message3 = display_message('You have selected to display the customer order history')
     message3.color()
 
-    sys.stdout.write('Please enter a customer name'
+    sys.stdout.write('Please enter a customer name '
                     'for checking order history:' + '\n')
     name = sys.stdin.readline().strip()
     customer_name= Customer(name)
@@ -25,7 +25,7 @@ def check_history():
     while Valid_customer_name:   
         try:
             name = float(name)
-            name = str(input('Pleaase enter' 
+            name = str(input('Pleaase enter '
                       'the customer name again' + '\n').strip())     
         except ValueError:
             if name not in customer_list:

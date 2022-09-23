@@ -8,7 +8,7 @@ def add_update():
 
     Input should be the correct format.
     '''  
-    message4 = display_message('You have select to add and update menu items')
+    message4 = display_message('You have selected to add and update menu items')
     message4.color()
 
     search_menu()
@@ -43,7 +43,7 @@ def add_update():
 def add_sold_out_stickers():
     '''Add sold out stickers
     '''
-    message5 = display_message('You have select to add sold out stickers')
+    message5 = display_message('You have selected to add sold out stickers')
     message5.color()
 
     sold_out_list()

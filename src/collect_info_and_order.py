@@ -8,7 +8,7 @@ def collect_info():
     '''Collect customers' name'''
     global name
 
-    message1 = display_message('You have select to place order for customers')
+    message1 = display_message('You have selected to place order for customers')
     message1.color()
     sys.stdout.write('Enter the name of the customer:' + '\n')
     

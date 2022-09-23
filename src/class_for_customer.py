@@ -165,8 +165,8 @@ class Customer:
         if self.name not in rewards_customer_list:
             valid = False
             while not valid:
-                sys.stdout.write('The customer is not in the rewards program.' 
-                'Does the customer want to join the rewards program' + '\n'
+                sys.stdout.write('The customer is not in the rewards program. '
+                                'Does the customer want to join the rewards program' + '\n'
                  + '[Enter Y/N]?' +'\n')
                 answer = str(sys.stdin.readline().strip())
             # Check whether the answer is valid.

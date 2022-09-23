@@ -7,7 +7,7 @@ from class_for_text import display_message
 
 def display_products():
     
-    message6 = display_message('You have select to display all products')
+    message6 = display_message('You have selected to display all products')
     message6.color()
     table = Table(title='This is the product list', 
                  title_style = 'bold red', show_lines=True)
