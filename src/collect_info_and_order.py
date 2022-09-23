@@ -1,6 +1,6 @@
 import sys
 from class_for_text import display_message
-from class_for_customer import Customer
+from class_for_customer import Customer, Order
 
 
 
@@ -23,15 +23,19 @@ def collect_info():
         else:
             sys.stdout.write('please enter a valid name, not number\n')
 
+    return name
+
 def collect_info_and_order():
+
     customer_name = Customer(collect_info())
-    customer_name.order()
-    customer_name.record_quantity()
-    customer_name.repeat_order()
     customer_name.add_membership()
-    customer_name.add_rewards_customer()
-    customer_name.calculate_price()
-    customer_name.print_receipt()
+    customer_name.add_rewards_membership()
+    customer_order = Order(customer_name)
+    customer_order.order()
+    customer_order.record_quantity()
+    customer_order.repeat_order()
+    customer_order.calculate_price()
+    customer_order.print_receipt()
     customer_name.store_order_history()
 
 if __name__ == '__main__':

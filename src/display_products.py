@@ -1,17 +1,14 @@
-import sys
 import json
 from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
-from add_update_menu import sold_out_list, search_menu
 
 
 def display_products():
-
-
     rprint('Product list:')
 
-    table = Table(title='This is the product list', title_style = 'bold red', show_lines=True)
+    table = Table(title='This is the product list', 
+                 title_style = 'bold red', show_lines=True)
 
     table.add_column('Products', style='green')
     table.add_column('Price', style='yellow', no_wrap=True)

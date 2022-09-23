@@ -19,7 +19,8 @@ def customer_info():
     with open('Rewards_customer_list.json', 'rb') as rewards_customer:
         rewards_customer_list = json.load(rewards_customer)
 
-    number = input('Please select customer group: 1 for non-rewards customer, 2 for rewards customer'+'\n').strip()
+    number = input('Please select customer group: '
+                   '1 for non-rewards customer, 2 for rewards customer'+'\n').strip()
     valid = True
     while valid:
         try:

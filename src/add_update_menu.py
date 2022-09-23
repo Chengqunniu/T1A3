@@ -3,16 +3,19 @@ import sys
 
 
 def add_update():
-    '''Convert the input into a dictionary and update current dictionary for menu. Input should be the correct format.
+    '''Convert the input into a dictionary and update current dictionary for menu.
+    Input should be the correct format.
     '''  
     search_menu()
-    string = str(input('Please enter the new stickers and prices with the following format: sticker_1 : price_1, sticker_2: price_2\n').strip())
+    string = str(input('Please enter the new stickers and prices with the following format: '
+                      + 'sticker_1 : price_1, sticker_2: price_2\n').strip())
     string_list = string.split(',')  
     new_menu_list = []
     # For loop to update the stickers and prices
     for x in string_list:  #obtain each sticker and their cost as a single string
         change_list = x.split(':')     
-         # Remove space for each string, then form a list. Later use for loop to go though the list and update the menu and price.
+         # Remove space for each string, then form a list. 
+         # Later use for loop to go though the list and update the menu and price.
         for i in change_list:
             new_sticker = (i.strip())      
             new_menu_list.append(new_sticker)
@@ -28,6 +31,7 @@ def add_update():
         new_menu_list = []
     with open('Menu.json', 'w', encoding='utf8') as menu_list:
         json.dump(menu, menu_list)
+
     return menu
 
 def add_sold_out_stickers():
@@ -36,10 +40,11 @@ def add_sold_out_stickers():
     sold_out_list()
     search_menu()
     sys.stdout.write('Please add sold out stickers' + '\n')
-    # Use strip and split methods to remove space and comma. This part the the most challenging part. I have tried a lot of times, and printed out each variable to help me to understand these two methods. With step-by-step, I finally understood how to use these two methods.
+    # Use strip and split methods to remove space and comma. 
     stickername = str(sys.stdin.readline().strip())
     stickername_list = stickername.split(',')
-    # For loop to check whether the sticker is in menu or not. If yes, update the sold out list. If not, let customer know.
+    # For loop to check whether the sticker is in menu or not. 
+    # If yes, update the sold out list. If not, let customer know.
     sold_out_sticker_list = []
     for x in stickername_list:
         sold_out_stickers = x.strip()
@@ -50,6 +55,7 @@ def add_sold_out_stickers():
     final_sold_out_stickers_list = sold_out_sticker_list
     with open('sold_out_list.json', 'w', encoding='utf8') as sold_out:
             json.dump(final_sold_out_stickers_list, sold_out)
+            
     return final_sold_out_stickers_list
     
 def search_menu():

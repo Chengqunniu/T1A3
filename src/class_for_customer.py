@@ -6,11 +6,11 @@ import pendulum as pdl
 with open('Menu.json', 'rb') as menu_list:
     menu = json.load(menu_list)
 
-class Customer:
 
+class Order:
     def __init__(self, name):
         self.name = name
-
+    
     def order(self):
         '''order stickers
         '''
@@ -40,8 +40,8 @@ class Customer:
         
         # While loop to check the input and give user another change if the input is invalid.
         while quantity_is_float:
-            sys.stdout.write('''Enter the sticker quantity 
-            [Enter a positive integer only, e.g. 1, 2, 3]:\n''')
+            sys.stdout.write('Enter the sticker quantity'
+                            + '[Enter a positive integer only, e.g. 1, 2, 3]:\n')
             quantity = (sys.stdin.readline().strip())
             # Use try-except to exclude float, 0, negative and input that not a number.
             try:
@@ -87,14 +87,54 @@ class Customer:
         for sticker_index, sticker_name in enumerate(order):    
             price = float(menu[sticker_name]) * int(number_of_stickers[sticker_index])
             base_price += price
-        self.search_rewards_customer()
+        Customer.search_rewards_customer(self)
         if self.name in rewards_customer_list:
             total_cost= float(base_price * 9/10)
             discount = str('-10%')
         else:
             total_cost = base_price
             discount = str('0%')
+
+
+    def print_receipt(self):
+        '''Print receipt
+        '''
+        receipt_time = set_time()
+        # This function is to align the line of the receipt
+        receipt_line = lambda left, right: (f'{left:25}  {str(right):>45}') +'\n'
+        Line_1 = str(order_time)
+        sys.stdout.write(receipt_line('Ordering time', Line_1))
+        print()
+        print('*' * 70)
+        print('Receipt of Customer' + ' ' + str(self.name))
+        print('*' * 70)     
+        # Use for loop to display each sticker on a single line on the receipt.
+        for sticker_index, sticker_name in enumerate(order):      
+            unit_price = str(menu[sticker_name])
+            number_ordered = str(number_of_stickers[sticker_index])
+            Line_2 = unit_price + '(AUD)' + ' x ' + number_ordered
+            sys.stdout.write(receipt_line(str(sticker_name + ':'), Line_2))
+        Line_3 = str(discount)
+        Line_4 = str(total_cost) + '(AUD)'
+        Line_5 = str(receipt_time)
+        sys.stdout.write(receipt_line('Discount:', Line_3))
+        sys.stdout.write(receipt_line('Total Cost:', Line_4))  
+        print('*' * 70)
+        sys.stdout.write(receipt_line('Printing time', Line_5))
+
+def set_time():
+    '''Set the time
+    '''
+    dt = pdl.now()
+    time = dt.format('DD MMMM YYYY, dddd HH:mm:ss A')
     
+    return time
+
+
+class Customer:
+    def __init__(self, name):
+        self.name = name
+   
     def add_membership(self):
         '''Add customer to the customer list
         '''
@@ -107,7 +147,7 @@ class Customer:
                 json.dump(customer_order_history, add_history)
         
         return customer_list
-    
+  
     def add_rewards_membership(self):
         self.search_rewards_customer()
         if self.name not in rewards_customer_list:
@@ -141,32 +181,7 @@ class Customer:
         customer_order_history[index_of_customer].append(final_personal_order_history)
         with open('Customer_order_history.json', 'w', encoding='utf8') as add_history:
             json.dump(customer_order_history, add_history)
-
-    def print_receipt(self):
-        '''Print receipt
-        '''
-        receipt_time = set_time()
-        # This function is to align the line of the receipt
-        receipt_line = lambda left, right: (f'{left:25}  {str(right):>45}') +'\n'
-        Line_1 = str(order_time)
-        sys.stdout.write(receipt_line('Ordering time', Line_1))
-        print()
-        print('*' * 70)
-        print('Receipt of Customer' + ' ' + str(self.name))
-        print('*' * 70)     
-        # Use for loop to display each sticker on a single line on the receipt.
-        for sticker_index, sticker_name in enumerate(order):      
-            unit_price = menu[sticker_name]
-            Line_2 = str(unit_price) + '(AUD)' + ' x ' + str(number_of_stickers[sticker_index])
-            sys.stdout.write(receipt_line(str(sticker_name + ':'), Line_2))
-        Line_3 = str(discount)
-        Line_4 = str(total_cost) + '(AUD)'
-        Line_5 = str(receipt_time)
-        sys.stdout.write(receipt_line('Discount:', Line_3))
-        sys.stdout.write(receipt_line('Total Cost:', Line_4))  
-        print('*' * 70)
-        sys.stdout.write(receipt_line('Printing time', Line_5))
-
+    
     def search_rewards_customer(self):
         '''Retrieve rewards customer information
         '''
@@ -208,11 +223,3 @@ class Customer:
             customer_order_history = json.load(search_history)
 
         return customer_order_history
-
-def set_time():
-    '''Set the time
-    '''
-    dt = pdl.now()
-    time = dt.format('DD MMMM YYYY, dddd HH:mm:ss A')
-    
-    return time

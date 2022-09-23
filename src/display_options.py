@@ -1,5 +1,4 @@
 import sys
-from unicodedata import category
 import clearing
 from class_for_text import text
 from collect_info_and_order import collect_info_and_order
