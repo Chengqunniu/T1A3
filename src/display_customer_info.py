@@ -37,9 +37,13 @@ def customer_info():
                             table.add_row(name, '❌')
                             valid = False
             elif number == 2:
-                for name in rewards_customer_list:
-                    table.add_row(name, '✅')
-                    valid = False
+                if customer_list == rewards_customer_list:
+                    print('All customers are non-rewards customers')
+                    break
+                else:
+                    for name in rewards_customer_list:
+                        table.add_row(name, '✅')
+                        valid = False
             else:
                 number = input('Please enter a valid number: ').strip()
         except ValueError:
