@@ -232,6 +232,10 @@ Checklist-items:
 * 
   ![Project Management Software](docs/TrelloDay5.png)
 
+## Flow Chart
+
+  ![Project Management Software](docs/Flowchart.png)
+
 ## Testing
 
 ---
