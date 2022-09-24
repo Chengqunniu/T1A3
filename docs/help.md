@@ -17,8 +17,10 @@
     `cd src`
 8. Copy the following command to install all dependencies
 
-    `pip install -r requirements.txt`
-9. There are four executable files you can choose to run the file. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
+    `chmod +x install_dependencies.sh`
+
+    `./install_dependencies.sh`
+9. There are five other executable files you can choose to, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
 
 
 ## Dependencies
@@ -70,3 +72,16 @@ file name is the `xxxxx.sh`
     `Command: ./help.sh`
 
     This file will display the content of this help document.
+
+## Features
+
+---
+
+* Collect customer's information
+* Order stickers and print receipt
+* Allow customers to join membership and obtain discount
+* Display existing customers' information
+* Welcome page of the app
+* Display customer order history
+* Display all products
+* Add and update menu

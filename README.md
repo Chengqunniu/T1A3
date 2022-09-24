@@ -210,6 +210,27 @@ Checklist-items:
 * Update item that is out of stock
 * Let the user know if the sticker name entered is invalid if it is not in the menu
 
+## Project Management Software
+
+* Day1
+
+  ![Project Management Software](docs/TrelloDay1.png)
+
+* Day2
+
+  ![Project Management Software](docs/TrelloDay2.png)
+
+* Day3
+
+  ![Project Management Software](docs/TrelloDay3.png)
+
+* Day4
+
+  ![Project Management Software](docs/TrelloDay4.png)
+
+* Day5
+
+
 ## Testing
 
 ---
@@ -294,8 +315,10 @@ Help Documentation can be found [here](/docs/help.md)
     `cd src`
 8. Copy the following command to install all dependencies
 
-    `pip install -r requirements.txt`
-9. There are four executable files you can choose to run the file. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
+    `chmod +x install_dependencies.sh`
+
+    `./install_dependencies.sh`
+9. There are five other executable files you can choose to, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
 
 ### Dependencies
 
