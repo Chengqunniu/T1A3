@@ -14,6 +14,7 @@
     `git clone https://github.com/Chengqunniu/T1A3.git`
 7. Copy the following command to navigate to the src folder:
 
+    `cd T1A3`
     `cd src`
 8. Copy the following command to install all dependencies
 

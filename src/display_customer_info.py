@@ -37,7 +37,7 @@ def customer_info():
                             table.add_row(name, '❌')
                             valid = False
             elif number == 2:
-                if customer_list == rewards_customer_list:
+                if rewards_customer_list == []:
                     print('All customers are non-rewards customers')
                     break
                 else:

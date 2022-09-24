@@ -317,13 +317,14 @@ Help Documentation can be found [here](/docs/help.md)
     `git clone https://github.com/Chengqunniu/T1A3.git`
 7. Copy the following command to navigate to the src folder:
 
+    `cd T1A3`
     `cd src`
 8. Copy the following command to install all dependencies
 
     `chmod +x install_dependencies.sh`
 
     `./install_dependencies.sh`
-9. There are five other executable files you can choose to, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
+9.  There are five other executable files you can choose to, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
 
 ### Dependencies
 
