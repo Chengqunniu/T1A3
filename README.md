@@ -331,7 +331,7 @@ Help Documentation can be found [here](/docs/help.md)
 
 ---
 
-Please install all modules within the [Requirement.txt](../src/requirement.txt)
+Please install all modules within the [Requirement.txt](/src/requirement.txt)
 
 ### System requirements
 
