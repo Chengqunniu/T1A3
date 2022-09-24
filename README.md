@@ -29,13 +29,13 @@ The aim of this application is to develop an order system for a sticker shop. Th
 
 * Display existing customers' information
   
-  This feature displays all existing customers' information on the terminal, includes their name and membership status. Users could also select to display non-rewards customers'  or rewaruds customers' information.
+  This feature displays all existing customers' information on the terminal, includes their name and membership status. Users could also select to display non-rewards customers'  or rewards customers' information.
 
   ![image for this feature](/docs/Display_customer_information.png)
 
 * Welcome page of the app
   
-  This feature displays the welcome page of the system. Colored store name will be displayed in the middle of the terminal and the user needs to press enter to continue. Users could also set password and use the password to start the program.
+  This feature displays the welcome page of the system. Colored store name will be displayed in the middle of the terminal and users need to press enter to continue. Users could also set password and use the password to start the program.
   
   ![image for this feature](/docs/Welcome_page.png)
 
@@ -57,7 +57,7 @@ The aim of this application is to develop an order system for a sticker shop. Th
 
   ![image for this feature](/docs/Add_and_update_menu_items.png)
 
-  Users could also record stickers that are sold out.
+  Users could also matk stickers that are sold out.
 
   ![image for this feature](/docs/Add_sold_out_stickers.png)
 
@@ -71,7 +71,7 @@ The aim of this application is to develop an order system for a sticker shop. Th
 
 ***Highest Priority***
 
-The system will first display a message asking users to enter the customer's information. User could enter the customer's information at the terminal. System will read the input and check wether it is an valid input. If not, the system will display an error message and allowing users to enter again. Once the system receives a valid input, it will store the customer's information.
+The system will first display a message asking users to enter the customer's information. Users could enter the customer's information at the terminal. System will read the input and check wether it is an valid input. If not, the system will display an error message and allowing users to enter again. Once the system receives a valid input, it will store the customer's information.
 
 Checklist-items:
 
@@ -87,7 +87,7 @@ Checklist-items:
 
 ***Highest Priority***
 
-The system will first ask which sticker that customers want. Once the system receives an valid input, it will then ask the quantity of the selected sticker and check whether the input is valid. If users enter an invalid input, they will be notified and have chance to enter again. After this, the system will ask wether the customer want to order another sticker. If yes, it will repeat previous steps. If not, it will calculate the total cost and print the receipt for the customer.
+The system will first ask which sticker that customer want to order. Once the system receives an valid input, it will then ask the quantity of the selected sticker and check whether the input is valid. If users enter an invalid input, they will be notified and have chance to enter again. After this, the system will ask wether the customer want to order another sticker. If yes, it will repeat previous steps. If not, it will calculate the total cost and print the receipt for the customer.
 
 Checklist-items:
 
@@ -196,7 +196,7 @@ Checklist-items:
 
 ***Last Priority***
 
-This feature ask the user to enter the name and price of the sticker they want to add or update. Then split them, remove the space and store them as a dictionary in the json file. If users enter wrong format or invalid input, the system will let them know. Users could also add sold out stickers to the sold out json file. They will have another chance as well if they enter an invalid input.
+This feature ask the user to enter the name and price of the sticker they want to add or update. Then split them, remove the space before and after, and store them as a dictionary in the json file. If users enter wrong format or invalid input, the system will let them know. Users could also add sold out stickers to the sold out json file. They will have another chance as well if they enter an invalid input.
 
 Checklist-items:
 
@@ -311,20 +311,21 @@ Help Documentation can be found [here](/docs/help.md)
    please go to this [page](https://www.python.org/downloads/) to install python.
 4. Type `pip --version` to check whether pip has been installed.
 5. If you do not have pip installed on your computer,
-   please go to thie [page](https://pip.pypa.io/en/stable/installation/) to install pip.
+   please go to this [page](https://pip.pypa.io/en/stable/installation/) to install pip.
 6. Copy the following command to the terminal to clone the program:
 
     `git clone https://github.com/Chengqunniu/T1A3.git`
 7. Copy the following command to navigate to the src folder:
 
     `cd T1A3`
+
     `cd src`
 8. Copy the following command to install all dependencies
 
     `chmod +x install_dependencies.sh`
 
     `./install_dependencies.sh`
-9.  There are five other executable files you can choose to, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
+9.  There are five other executable files, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
 
 ### Dependencies
 

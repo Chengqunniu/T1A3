@@ -8,20 +8,21 @@
    please go to this [page](https://www.python.org/downloads/) to install python.
 4. Type `pip --version` to check whether pip has been installed.
 5. If you do not have pip installed on your computer,
-   please go to thie [page](https://pip.pypa.io/en/stable/installation/) to install pip.
+   please go to this [page](https://pip.pypa.io/en/stable/installation/) to install pip.
 6. Copy the following command to the terminal to clone the program:
 
     `git clone https://github.com/Chengqunniu/T1A3.git`
 7. Copy the following command to navigate to the src folder:
 
     `cd T1A3`
+
     `cd src`
 8. Copy the following command to install all [dependencies](#dependencies)
 
     `chmod +x install_dependencies.sh`
 
     `./install_dependencies.sh`
-9. There are five other executable files you can choose to, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
+9. There are five other executable files, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
 
 
 ## Dependencies
