@@ -2,7 +2,7 @@
 
 **[Link to the GitHub Repository](https://github.com/Chengqunniu/T1A3)**
 
-**Link to the presentation**
+**[Link to the presentation](https://www.youtube.com/watch?v=22Z0mmINPdI&t=1s)**
 
 ## Purpose of the app and list of features
 
@@ -229,7 +229,8 @@ Checklist-items:
   ![Project Management Software](docs/TrelloDay4.png)
 
 * Day5
-
+* 
+  ![Project Management Software](docs/TrelloDay5.png)
 
 ## Testing
 
