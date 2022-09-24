@@ -6,8 +6,7 @@ from display_options import welcome_page
 
 
 def check_password():
-    '''Check password
-    '''
+    '''Check password'''
     password = input('Enter your password:')
     with open('Password.json', 'rb') as file:
         customer_password = json.load(file)
@@ -22,8 +21,7 @@ def check_password():
 
 
 def main():
-    '''Main program
-    '''
+    '''Main program'''
     welcome_messages = text2art('SmoonyPaws', font='dancingfont')
     message = display_message(welcome_messages)
     press_enter = text('Press enter to continue...')
@@ -37,4 +35,3 @@ if __name__ == '__main__':
     check_password()
     main()
     clearing.clear()
-

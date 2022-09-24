@@ -16,7 +16,7 @@
 
     `cd T1A3`
     `cd src`
-8. Copy the following command to install all dependencies
+8. Copy the following command to install all [dependencies](#dependencies)
 
     `chmod +x install_dependencies.sh`
 

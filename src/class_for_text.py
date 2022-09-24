@@ -6,7 +6,7 @@ from rich.text import Text
 class text:
     base_style = Style(color='cyan', blink=True,)
 
-    
+  
     def __init__(self, content):
         self.content = content
 
@@ -25,6 +25,7 @@ class text:
 
     def collect_input(self):
         input()
+
 
 class display_message(text):
     base_style = Style(color='purple')

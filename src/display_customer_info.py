@@ -6,8 +6,7 @@ from class_for_text import display_message
 
 
 def customer_info():
-    '''Display customer information as a table
-    '''
+    '''Display customer information as a table'''
     message2 = display_message('You have selected to display the customer information')
     message2.color()
     

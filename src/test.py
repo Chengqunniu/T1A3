@@ -9,8 +9,7 @@ from main import check_password
 
 # Test for collect info function
 class TestCollectInfo:
-    '''Test for collect info function
-    '''
+    '''Test for collect info function'''
     def test_collect_name(self, monkeypatch):
         '''Test for invalid input
         '''
@@ -22,8 +21,7 @@ class TestCollectInfo:
 
 
     def test_value_error(self):
-        '''Test ValueError
-        '''
+        '''Test ValueError'''
         with pytest.raises(ValueError):
             name = 'Alex'
             name == float(name)
@@ -34,16 +32,14 @@ customer = Order('Sam')
 
 # Test for repeat order function
 def test_repeat_order(monkeypatch):
-    '''Test repeat order function
-    '''
+    '''Test repeat order function'''
     monkeypatch.setattr('sys.stdin', io.StringIO('N'))
     assert customer.repeat_order() is True
 
 
 # Test for add_membership function
 class TestAddMembership:
-    '''Test add membership function
-    '''
+    '''Test add membership function'''
     def test_add_membership(self):
         '''Automatically add customer to the customer list
         '''
@@ -58,15 +54,13 @@ class TestAddMembership:
 
 
     def test_not_add_rewards_membership(self, monkeypatch):
-        '''Choosing not to add customers to the rewards customer list
-        '''
+        '''Choosing not to add customers to the rewards customer list'''
         monkeypatch.setattr('sys.stdin', io.StringIO('N'))
         assert name.add_rewards_membership() == []
 
 
     def test_add_rewards_membership(self, monkeypatch):
-        '''Choosing to add customers to the rewards customer list
-        '''
+        '''Choosing to add customers to the rewards customer list'''
         monkeypatch.setattr('sys.stdin', io.StringIO('Y'))
         assert name.add_rewards_membership() == ['Sam']
         rewards_customer_list = []
@@ -77,8 +71,7 @@ class TestAddMembership:
 
 # Test add_update function
 class TestAddUpdateMenu:
-    '''Test add and update function
-    '''
+    '''Test add and update function'''
     def test_invalidinput_add_update_menu(self, monkeypatch):
         '''Test with invalid price, which is a string
         '''
@@ -88,19 +81,18 @@ class TestAddUpdateMenu:
 
 
     def test_invalidprice_add_update_menu(self, monkeypatch):
-        '''Test with invalid price, which is ess than 1.0
-        '''
+        '''Test with invalid price, which is ess than 1.0'''
         monkeypatch.setattr('builtins.input',  lambda _: 'Hana:0')
         assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0,
                                "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
 
 
     def test_add_update_menu(self, monkeypatch):
-        '''Test with valid input
-        '''
+        '''Test with valid input'''
         monkeypatch.setattr('builtins.input',  lambda _: 'Hana:10')
         assert add_update() == {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0,
-                               "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0, "Hana": 10.0}   
+                               "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0, "Hana": 10.0} 
+                               
         menu = {"Yum Yum Hana": 5.0, "Winter Vibes": 5.0,
                "Spring Vibes": 5.0, "Summer Vibes": 5.0, "Autumn Vibes": 5.0}
         with open('Menu.json', 'w', encoding='utf8') as menu_list:
@@ -109,8 +101,7 @@ class TestAddUpdateMenu:
 
 # Test add_sold_out_stickers function
 class TestAddSoldOutStickers:
-    '''Test add sold out stickers function
-    '''
+    '''Test add sold out stickers function'''
     def test_invalid_add_sold_out_stickers(self, monkeypatch):
         '''Sticker entered is not in the menu
         '''
@@ -119,10 +110,10 @@ class TestAddSoldOutStickers:
 
 
     def test_add_sold_out_stickers(self, monkeypatch):
-        '''Sticker entered is in the menu
-        '''
+        '''Sticker entered is in the menu'''
         monkeypatch.setattr('sys.stdin', io.StringIO('Winter Vibes'))
         assert add_sold_out_stickers() == ['Winter Vibes']
+
         final_sold_out_stickers_list = []
         with open('sold_out_list.json', 'w', encoding='utf8') as sold_out:
             json.dump(final_sold_out_stickers_list, sold_out)
@@ -130,7 +121,6 @@ class TestAddSoldOutStickers:
 
 # Test for check_password function
 def test_password(monkeypatch):
-    '''Test check password function
-    '''
+    '''Test check password function'''
     monkeypatch.setattr('builtins.input',  lambda _: 'password')
     assert check_password() is False

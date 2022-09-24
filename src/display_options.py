@@ -14,6 +14,7 @@ message2 = text('Welcome to the Smoonypaws ordering system!' )
 
 
 def welcome_page():
+    '''Option menu'''
     options = ['1: Collect information & Order stickers',
      '2: Display existing customer information',
      '3: Check customer order history',

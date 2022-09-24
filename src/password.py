@@ -8,9 +8,10 @@ from class_for_text import text
     "--password", prompt=True, hide_input=True,
     confirmation_prompt=True
 )
+
+
 def encode(password):
-    '''create a new password
-    '''
+    '''Create a new password'''
     system_password = password
     with open('Password.json', 'w', encoding = 'utf8') as file:
         json.dump(system_password, file)

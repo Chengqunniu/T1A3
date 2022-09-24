@@ -58,6 +58,7 @@ def add_sold_out_stickers():
     # Use strip and split methods to remove space and comma. 
     stickername = str(sys.stdin.readline().strip())
     stickername_list = stickername.split(',')
+    
     # For loop to check whether the sticker is in menu or not. 
     # If yes, update the sold out list. If not, let customer know.
     sold_out_sticker_list = []

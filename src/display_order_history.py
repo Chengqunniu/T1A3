@@ -7,9 +7,7 @@ from class_for_customer import Customer
 from class_for_text import display_message
 
 def check_history():
-    '''
-    Check customer order history
-    '''
+    '''Check customer order history'''
     global customer_name
 
     message3 = display_message('You have selected to display the customer order history')
@@ -29,7 +27,7 @@ def check_history():
                       'the customer name again' + '\n').strip())     
         except ValueError:
             if name not in customer_list:
-                name = str(input('Pleaase enter'
+                name = str(input('Pleaase enter '
                           'the customer name again' + '\n').strip())          
             else:
                 Valid_customer_name = False  

@@ -6,6 +6,7 @@ from class_for_text import display_message
 
 
 def display_products():
+    '''Display all products'''
     
     message6 = display_message('You have selected to display all products')
     message6.color()

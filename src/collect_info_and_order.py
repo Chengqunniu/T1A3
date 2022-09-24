@@ -3,7 +3,6 @@ from class_for_text import display_message
 from class_for_customer import Customer, Order
 
 
-
 def collect_info():
     '''Collect customers' name'''
     global name
@@ -27,6 +26,7 @@ def collect_info():
     
     return name
 
+
 def collect_info_and_order():
     customer_name = Customer(collect_info())
     customer_name.add_membership()
@@ -40,6 +40,5 @@ def collect_info_and_order():
     customer_name.store_order_history()
 
 if __name__ == '__main__':
-    collect_info_and_order()
-    
+    collect_info_and_order()  
     print()
