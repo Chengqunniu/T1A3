@@ -1,10 +1,10 @@
-import sys
 from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt
 from class_for_customer import Customer
 from class_for_text import display_message
+
 
 def check_history():
     '''Check customer order history'''
@@ -18,7 +18,7 @@ def check_history():
     customer_name= Customer(name)
     customer_list = customer_name.search_customer()
     Valid_customer_name = True
-    # While loop to check whether the customer name entered is in the system.
+    # While loop to check whether the customer name entered is an existing customer.
     # If not, the loop will repeat.
     while Valid_customer_name:   
         try:
@@ -32,7 +32,6 @@ def check_history():
             else:
                 Valid_customer_name = False  
     index_of_customer = customer_list.index(name)
-    # If loop to display customer order history.
     # If order history is empty, it will display the sentence
     # to let customer know that they have no order history.
     # If not, it will print the order history.

@@ -4,8 +4,6 @@ from rich.prompt import Prompt
 import pendulum as pdl
 
 
-
-
 class Order:
     def __init__(self, name):
         self.name = name
@@ -19,7 +17,6 @@ class Order:
         global number_of_stickers
         global order_time
         global menu
-
 
         with open('Menu.json', 'rb') as menu_list:
             menu = json.load(menu_list)
@@ -169,7 +166,7 @@ class Customer:
                                 'Does the customer want to join the rewards program' + '\n'
                  + '[Enter Y/N]?' +'\n')
                 answer = str(sys.stdin.readline().strip())
-            # Check whether the answer is valid.
+                # Check whether the answer is valid.
                 if answer == 'Y' or answer == 'N':
                     valid = True
             if answer == 'Y':

@@ -6,8 +6,7 @@ from class_for_text import text
 @click.command()
 @click.option(
     "--password", prompt=True, hide_input=True,
-    confirmation_prompt=True
-)
+    confirmation_prompt=True)
 
 
 def encode(password):

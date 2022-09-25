@@ -51,4 +51,3 @@ def customer_info():
 
     console = Console()
     console.print(table)
-
