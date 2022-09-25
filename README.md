@@ -325,7 +325,7 @@ Help Documentation can be found [here](/docs/help.md)
     `chmod +x install_dependencies.sh`
 
     `./install_dependencies.sh`
-9.  There are five other executable files, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
+9. There are five other executable files, each with different purposes. Please go the [command line argments section](#command-line-argments-to-execute-the-program) below.
 
 ### Dependencies
 
@@ -352,7 +352,7 @@ file name is the `xxxxx.sh`
 
     You should run this file first to set the password of your system.
     And check whether you have installed python properly.
-    Then you can chose any of the three below
+    Then you can chose any of the three below.
 
 * full_options.sh
   
