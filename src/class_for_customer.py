@@ -4,8 +4,6 @@ from rich.prompt import Prompt
 import pendulum as pdl
 
 
-with open('Menu.json', 'rb') as menu_list:
-    menu = json.load(menu_list)
 
 
 class Order:
@@ -20,11 +18,16 @@ class Order:
         global order
         global number_of_stickers
         global order_time
+        global menu
+
+
+        with open('Menu.json', 'rb') as menu_list:
+            menu = json.load(menu_list)
 
         order_time = set_time()
         number_of_stickers = []
         order = []
-
+ 
         sys.stdout.write('Enter the sticker name' 
                         '[Enter a valid sticker only, e.g. Yum Yum Hana]:\n')
         sticker = str(sys.stdin.readline().strip())
