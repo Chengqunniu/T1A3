@@ -30,6 +30,7 @@ class text:
 class display_message(text):
     base_style = Style(color='purple')
 
+
     def __init__(self, message):
         super().__init__(message)
         self.message = message

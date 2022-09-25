@@ -26,9 +26,10 @@ class TestCollectInfo:
             name = 'Alex'
             name == float(name)
 
-# Test for order function
+
 name = Customer('Sam')
 customer = Order('Sam')
+
 
 # Test for repeat order function
 def test_repeat_order(monkeypatch):
