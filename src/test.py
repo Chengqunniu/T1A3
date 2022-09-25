@@ -26,7 +26,6 @@ class TestCollectInfo:
             name = 'Alex'
             name == float(name)
 
-
 name = Customer('Sam')
 customer = Order('Sam')
 
